@@ -1,0 +1,41 @@
+﻿@model EntitiyLayer.Concrete.Blog
+@{
+    ViewBag.Title = "AddNewBlog";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+@using (Html.BeginForm("AddNewBlog", "AnaSayfa", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="container">
+        <div class="row">
+            
+            <div class="col-md-6">
+                @Html.Label("Kategori")
+                @Html.DropDownListFor(x => x.CategoryID, ViewBag.values != null ? (List<SelectListItem>)ViewBag.values : new List<SelectListItem>(), new { @class = "form-control", @required = "required" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                @Html.Label("Makine Kodu")
+                @Html.TextAreaFor(x => x.MakineKodu, new { @class = "form-control", @required = "required" })
+            </div>
+            <div class="col-md-6">
+                @Html.Label("Çalışma Durumu:")
+                @Html.DropDownListFor(x => x.Calısma_Durum, new SelectList(new[] {
+                    new { Value = "True", Text = "Çalışıyor" },
+                    new { Value = "False", Text = "Çalışmıyor" },
+                }, "Value", "Text"), "Seçiniz", new { @class = "form-control", @required = "required" })
+            </div>
+        </div>
+
+        <br />
+        <button class="btn btn-outline-primary" id="btnSave">Kaydet</button>
+    </div>
+}
+<script>
+    $('#btnSave').click(function () {
+        alert("Kategori başarılı bir şekilde eklendi");
+    });
+</script>

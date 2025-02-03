@@ -1,0 +1,169 @@
+﻿@model IEnumerable<EntitiyLayer.Concrete.Stok>
+@{
+    ViewBag.Title = "AdminBlogList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2>Stok Liste</h2>
+<br />
+<link rel="stylesheet" href="~/miniblog/fonts/icomoon/StyleSheet5.css">
+<link href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.2.9/css/responsive.bootstrap5.min.css" rel="stylesheet" />
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<!-- Dinamik arama input alanı -->
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Makine Adı</th>
+            <th>Bölümü</th>
+            <th>Parça Adı</th>
+            <th>Miktar</th>
+            <th>Son Güncelleme</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            string miktarClass = "";
+
+            // Miktara göre hücre stilini belirle
+            if (x.Miktar < 200)
+            {
+                miktarClass = "background-color: red; color: white;";
+            }
+            else if (x.Miktar < 500)
+            {
+                miktarClass = "background-color: yellow; color: black;";
+            }
+            else if (x.Miktar >= 500)
+            {
+                miktarClass = "background-color: green; color: white;";
+            }
+
+            <tr>
+                <td>@x.StokID</td>
+                <td>@x.Bölümü</td>
+                <td>@x.ParçaAdı</td>
+                <td style="@miktarClass">@x.Miktar</td> <!-- Miktar hücresine dinamik stil ekledik -->
+                <td>@x.son_güncelleme</td>
+                <td><a href="/Stok/DeleteBlog/@x.StokID" class="custom-btn btn-5" style="text-align:center" target="_self">Sil</a></td>
+                <td>
+                    <a href="javascript:void(0);" class="custom-btn btn-1" style="text-align:center" onclick="openUpdatePopup(@x.StokID)">Güncelle</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<!-- Pop-up Div -->
+<div id="updatePopup" style="display:none; position:fixed; top:50%; left:50%; transform:translate(-50%, -50%); background-color:white; padding:20px; border:1px solid black; z-index:1000;">
+    <h2>Stok Güncelle</h2>
+    <input type="hidden" id="stokId" />
+    <label>Miktar:</label>
+    <input type="number" id="stokMiktar" />
+    <label>Artır / Azalt:</label>
+    <select id="stokIslem">
+        <option value="artir">Artır</option>
+        <option value="azalt">Azalt</option>
+    </select>
+    <button onclick="updateStock()">Güncelle</button>
+    <button onclick="closePopup()">Kapat</button>
+</div>
+<!-- Sayfanın geri kalanını karartmak için -->
+<div id="popupOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background-color:rgba(0,0,0,0.5); z-index:999;"></div>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    // Tarayıcı bildirim izni isteme
+    function checkNotificationPermission() {
+        if (Notification.permission === "granted") {
+            return true;
+        } else if (Notification.permission !== "denied") {
+            Notification.requestPermission().then(function (permission) {
+                if (permission === "granted") {
+                    return true;
+                }
+            });
+        }
+        return false;
+    }
+    // Bildirim gönderme fonksiyonu
+    function sendStockNotification(stokAdi, miktar) {
+        if (checkNotificationPermission()) {
+            var options = {
+                body: stokAdi + " stoğu kritik seviyeye düştü: " + miktar,
+                icon: "/path-to-icon.png" // İsteğe bağlı ikon
+            };
+            var notification = new Notification("Stok Uyarısı", options);
+
+            // Bildirim tıklandığında yapılacaklar
+            notification.onclick = function () {
+                window.focus(); // Bildirime tıklayınca uygulamayı öne getirir
+            };
+        }
+    }
+    // Pop-up açma fonksiyonu
+    function openUpdatePopup(stokId) {
+        document.getElementById('stokId').value = stokId;
+        document.getElementById('updatePopup').style.display = 'block';
+        document.getElementById('popupOverlay').style.display = 'block';
+    }
+
+    // Pop-up kapatma fonksiyonu
+    function closePopup() {
+        document.getElementById('updatePopup').style.display = 'none';
+        document.getElementById('popupOverlay').style.display = 'none';
+    }
+
+    // Stok güncelleme fonksiyonu
+    function updateStock() {
+        var stokId = document.getElementById('stokId').value;
+        var yeniMiktar = parseInt(document.getElementById('stokMiktar').value);
+        var islemTipi = document.getElementById('stokIslem').value;
+
+        if (isNaN(yeniMiktar)) {
+            alert('Lütfen geçerli bir miktar girin.');
+            return;
+        }
+
+        if (islemTipi === 'azalt') {
+            yeniMiktar = -Math.abs(yeniMiktar); // Negatif hale getir
+        }
+
+        $.ajax({
+            url: '/Stok/UpdateStok',
+            type: 'POST',
+            data: {
+                id: stokId,
+                miktar: yeniMiktar
+            },
+            success: function (response) {
+                alert(response.message); // Gelen mesajı göster
+
+                if (response.success) {
+                    // Eğer kritik stok seviyesindeyse bildirim gönder
+                    if (response.message.includes("kritik seviyede")) {
+                        sendStockNotification('Stok ID ' + stokId, yeniMiktar);
+                    }
+                    closePopup();
+                    location.reload();  // Sayfayı yenile
+                }
+            },
+            error: function () {
+                alert('Hata oluştu.');
+            }
+        });
+    }
+
+    // Sayfa yüklendiğinde stok seviyesini kontrol et
+    
+
+    $(document).ready(function() {
+        checkStockLevels();
+    });
+</script>
+<a href="/Stok/AddNewBlog/" class="custom-btn btn-8" style="text-align:center;transform:translate(100px,0px)">Yeni Ürün Ekle</a>

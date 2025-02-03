@@ -1,0 +1,37 @@
+﻿@model EntitiyLayer.Concrete.Onarım
+@{
+    ViewBag.Title = "UpdateBlog1";
+    Layout = "~/Views/Shared/_AuhtorLayout.cshtml";
+}
+
+<link rel="stylesheet" href=" ~/miniblog/fonts/icomoon/StyleSheet5.css">
+<form class="form-group" method="post">
+    @Html.Label("ID")
+    @Html.TextBoxFor(x => x.OnarımID, new { @class = "form-control", @required = "required", @placeholder = "ID giriniz" })
+
+    @Html.Label("Yapılanİs")
+    @Html.TextAreaFor(x => x.Yapılmasıİs, new { @class = "form-control", @required = "required", @placeholder = "Yapılması işi giriniz" })
+
+    <button class="btn btn-outline-primary" id="btn1">Kaydet</button>
+
+    <script>
+        $('#btn1').click(function (e) {
+            var isValid = true;
+
+            // Gerekli alanların kontrolü
+            $('input[required], textarea[required]').each(function () {
+                if ($(this).val() === "") {
+                    isValid = false;
+                    alert("Lütfen tüm alanları doldurunuz.");
+                    return false; // Döngüyü sonlandırır
+                }
+            });
+
+            if (!isValid) {
+                e.preventDefault(); // Formun gönderilmesini engeller
+            } else {
+                alert("Başarılı bir şekilde kaydedildi.");
+            }
+        });
+    </script>
+</form>

@@ -1,0 +1,54 @@
+﻿body {
+    font-family: Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* İçerikleri ortalamak için */
+    padding: 20px; /* İçerik etrafında boşluk */
+}
+
+.row {
+    display: flex; /* Satırları flex ile ayarlayın */
+    justify-content: space-between; /* Eşit boşluk bırakmak için */
+    width: 100%; /* Satır genişliğini ayarlayın */
+    margin-bottom: 20px; /* Satırlar arası boşluk */
+}
+
+.col-md-3,
+.col-md-6 {
+    flex: 0 0 auto; /* Sabit genişlik ayarlamak için */
+    margin: 10px; /* Aralara boşluk eklemek için */
+}
+
+.table-responsive {
+    overflow-x: auto; /* Yatay kaydırma çubuğu eklemek için */
+    width: 100%; /* Tabloların genişliğini ayarlayın */
+    margin-top: 20px; /* Tablolar arası boşluk için */
+}
+
+/* Kart stilleri */
+.card {
+    width: 100%; /* Kartın tam genişlikte olması için */
+    text-align: center; /* Kart içeriğini ortalamak için */
+}
+
+/* Grafiklerin genişliği */
+.chart-container {
+    position: relative;
+    width: 100%; /* Grafik genişliği */
+    height: 400px; /* Grafik yüksekliği */
+    margin-top: 20px; /* Üstten boşluk */
+}
+
+/* Küçük ekranlar için kolon ayarları */
+@media (max-width: 768px) {
+    .col-md-3 {
+        width: calc(50% - 20px); /* Daha küçük ekranlarda %50 genişlik */
+    }
+
+    .col-md-6 {
+        width: 100%; /* Küçük ekranlarda %100 genişlik */
+    }
+}

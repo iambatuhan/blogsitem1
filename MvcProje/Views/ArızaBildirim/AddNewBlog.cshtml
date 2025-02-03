@@ -1,0 +1,203 @@
+﻿@model EntitiyLayer.Concrete.ArızaBildirme
+@{
+    Layout = null;
+}
+@*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+<!-- CSS -->
+<style>
+    /* Genel stil ayarları */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+
+    form {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        max-width: 500px;
+        width: 100%;
+    }
+
+    /* Form elemanları stili */
+    label {
+        font-weight: 600;
+        color: #343a40;
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    input[type="text"],
+    textarea,
+    select {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        margin-bottom: 20px;
+        box-sizing: border-box;
+        transition: border-color 0.3s;
+    }
+
+        input[type="text"]:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+        }
+
+    /* Buton stili */
+    button {
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 16px;
+        transition: background-color 0.3s;
+    }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+    /* Form başlıkları ve boşluklar */
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #495057;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    button:focus {
+        outline: none;
+    }
+</style>
+@*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+<link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+@*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+@*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    // Kategorilere bağlı makine kodları
+    const categoryMachineMap = {
+        1: ["OVALAMA TEZGAHI-ATA MARKA 40 TON(70.02)", "OVALAMA TEZGAHI-UMO MARKA 40 TON OTOMATİK(70.03))", "SOMUN KLAVUZ ÇEKME MAKİNASI (4LU)(70.16)", "PABUÇ PİMİ DELME ŞİŞİRME MAKİNASI(70.17)", "TRAPEZ MİL DELİK DELME HAVŞALAMA MAKİNASI(70.20)", "PABUÇ SAPLAMASI OVALAMA TEZGAHI(70.22)", "PABUÇ SAPLAMASI OVALAMA TEZGAHI(70.22)", "UMO MARKA OVALAMA TEZGAHI  40 TON(70.23)", "TELEREZYON AGİE(70.24)", "CNC TORNA MAZAK 200 8(80.01)", "CNC TORNA FEELER FTC 30 10'(80.02)", "CNC TORNA ACCUWAY 8'(80.03)", "TELEREZYON BROTHER", "CNC TORNA ECOCA SJ-20 6'(80.04)", "CNC DİK İŞLEME CHIRON FZ 12 W", "CNC DİK İŞLEM JITEN VMC 116(80.06)", "NUMERİK TAŞLAMA MAKİNASI ABAWERK(80.07)", "NUMERİK TAŞLAMA MAKİNASI ABAWERK(80.07)", "UNİVERSAL TORNA TEZSAN TOS(80.08)", "UNİVERSAL TORNA RUS(80.09)", "CNC DİK İŞLEME CHIRON FZ 18 W(80.12)", "CNC DİK İŞLEME CHIRON FZ 12 W-SON GELEN(80.13)", "PLASTİK ENJEKSİYON MAKİNESİ(80.14)", "CNC DİK İŞLEME HAAS WMB(80.15)", "CNC TORNA ECOCA MT-310(80.16)", "CNC TORNA ACCUWAY 10'(80.18)", "CNC DİK İŞLEME CHIRON FZ 18 W(2)(80.19)", "WELE A01265 DİŞ İŞLEM TEZGAHII(80.21)","CHIRON FZ12W İŞLEME TEZGAHI(80.22)"],
+        2: ["Kaynak1", "Kaynak2"],
+        3: ["ELMALI SIVAMA HİDROLİK PRES-400 TON(20.01)", "EKSANTRİK PRES-300 TON(20.02)", "EKSANTRİK PRES KRUPP-150 TON(20.03)", "EKSANTRİK PRES KÜÇÜK-100 TON(20.04)", "1000 TON PRES(20.07)", "315 TON PRES-BERNINGHAUS(20.08)", "İÇ KOVAN TIRNAK AÇMA FİKSTÜRÜ(20.10)", "SCMB HİDROLİK PRES-200 TON(20.11)", "SCMB HİDROLİK PRES-200 TON(20.12)","SCMB HİDROLİK PRES-200 TON(20.12)"],
+        4: ["TEST MAKİNASI", "PAMUÇ MONTAJ HATTI(90.08)", "TEST MAKİNASI (KUŞAK)(70.29)", "MAMUL MONTAJ HATTI(90.01)", "KİNG PİN-KONTEYNER KLT MONTAJ HATTI(90.06","PAMUÇ MONTAJ HATTI(90.08)"],
+        6: ["ŞERİT TESTERE BMSY 800(10.01)", "ŞERİT TESTERE KESMAK Q280(10.02)", "ŞERİT TESTERE KARMETAL Q280(10.03)", "ŞERİT TESTERE KESMAK Q280(10.04)", "OMS PROFİL KESME VE BİÇİMLENDİRME ÜNİTESİ(10.06)","GELISIM GLS-75 HIZLI KESIM MAKİNASI(10.07)"],//Testere
+        7: ["KUMLAMA MAKİNASI-ENDUMAK(40.01)", "NEWMAK KUMLAMA MAKİNASI (KÜÇÜK)(40.02)", "NEWMAK KUMLAMA MAKİNASI (BÜYÜK)(40.03)","BOYA TESİSİ(40.05)"] //BoyaHane
+    };
+
+    $(document).ready(function () {
+        $('#CategoryID').change(function () {
+            const categoryId = $(this).val();
+            const makineDropdown = $('#MakineKodu');
+
+            // Önce eski seçenekleri temizle
+            makineDropdown.empty();
+            makineDropdown.append('<option value="">Seçiniz</option>');
+
+            // İlgili kategori seçildiyse makine kodlarını ekle
+            if (categoryId && categoryMachineMap[categoryId]) {
+                const machines = categoryMachineMap[categoryId];
+                machines.forEach(function (machine) {
+                    makineDropdown.append('<option value="' + machine + '">' + machine + '</option>');
+                });
+            }
+        });
+    });
+</script>
+@using (Html.BeginForm("AddNewBlog", "ArızaBildirim", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <h2>Arıza Bildirimi</h2>
+
+    <div class="form-group">
+        <label for="name">Arıza Tanımı *</label>
+        <input type="text" class="form-control" name="Acıklama" required="" />
+    </div>
+    @Html.Label("Kategori")
+    @Html.DropDownListFor(x => x.CategoryID, ViewBag.values != null ? (List<SelectListItem>)ViewBag.values : new List<SelectListItem>(), new { @class = "form-control", @required = "required" })
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @Html.Label("Giren Kişi")
+    @Html.TextAreaFor(x => x.GirenKisi, new { @class = "form-control", @required = "required" })
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    <div class="form-group">
+        <label for="MakineKodu">Makine Kodu</label>
+        @Html.DropDownListFor(x => x.MakineKodu, new List<SelectListItem>(), new { @id = "MakineKodu", @class = "form-control", @required = "required" })
+    </div>
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @Html.Label("Çalışma Durumu:")
+    @Html.DropDownListFor(x => x.ÇalışmaDurum, new SelectList(new[] {
+      new {value="Çalışıyor",Text="Çalışıyor"},
+      new {value="Çalışmıyor",Text="Çalışmıyor"},
+    }, "Value", "Text"), "Seçiniz", new { @class = "form-control", @required = "required" })
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @Html.Label("Aciliyet Durumu:")
+    @Html.DropDownListFor(x => x.AciliyetDurumu, new SelectList(new[] {
+        new { Value = "Yüksek", Text = "Yüksek" },
+        new { Value = "Normal", Text = "Normal" },
+        new { Value = "Az", Text = "Az" },
+    }, "Value", "Text"), "Seçiniz", new { @class = "form-control", @required = "required" })
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    @Html.Label("Arıza Yeri")
+    @Html.DropDownListFor(x => x.ArızaYeri, new SelectList(new[] {
+        new { Value = "Elektronik", Text = "Elektronik" },
+        new { Value = "Mekanik", Text = "Mekanik" },
+        new { Value = "Hidrolik", Text = "Hidrolik" },
+        new { Value = "Pinomatik", Text = "Pinomatik" },
+        new { Value = "Tanımlamadı", Text = "Tanımlamadı" },
+    }, "Value", "Text"), "Seçiniz", new { @class = "form-control", @required = "required" })
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    <button type="button" class="btn btn-outline-primary" id="btn1">Kaydet</button>
+    <script>
+        // SweetAlert ile başarılı mesaj gösterimi
+        $('#btn1').click(function (event) {
+            event.preventDefault(); // Formun otomatik olarak submit olmasını engeller
+
+            // Boş alan kontrolü
+            var isValid = true;
+            $('input[required], textarea[required], select[required]').each(function () {
+                if ($(this).val() === '') {
+                    isValid = false;
+                    $(this).css('border-color', 'red'); // Hatalı alanı kırmızı yap
+                } else {
+                    $(this).css('border-color', '#ced4da'); // Doğru alanları eski rengine döndür
+                }
+            });
+            if (isValid) {
+                swal({
+                    title: "Başarılı!",
+                    text: "Arıza başarılı bir şekilde gönderildi",
+                    icon: "success",
+                    button: "Tamam",
+                }).then(() => {
+                    $('form').submit(); // Mesajdan sonra formu gönderir
+                });
+            } else {
+                swal({
+                    title: "Hata!",
+                    text: "Lütfen tüm gerekli alanları doldurun.",
+                    icon: "error",
+                    button: "Tamam",
+                });
+            }
+        });
+    </script>
+}
+@*//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*@

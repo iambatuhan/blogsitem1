@@ -1,0 +1,33 @@
+﻿@model EntitiyLayer.Concrete.Author
+@{
+    ViewBag.Title = "AuthorEdit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>AuthorEdit</h2>
+<form class="form-group" method="post">
+    @Html.Label("Yazar ID")
+    @Html.TextBoxFor(x => x.AuthorID, new { @class = "form-control" })
+    <br />
+    @Html.Label("Yazar Ad-Soyad")
+    @Html.TextBoxFor(x => x.AuthorName, new { @class = "form-control" })
+
+    <br />
+    @Html.Label("Hakkında")
+    @Html.TextBoxFor(x => x.AuthorAbout, new { @class = "form-control" })
+    <br />
+
+    @Html.Label("Mail")
+    @Html.TextAreaFor(x => x.Mail, new { @class = "form-control" })
+    <br />
+    <br />
+    @Html.Label("Yaptıgı Meslek")
+    @Html.TextAreaFor(x => x.AuthorTitle, new { @class = "form-control" })
+    <br />
+    <br />
+    @Html.Label("Password")
+    @Html.TextAreaFor(x => x.Password, new { @class = "form-control" })
+    <br />
+    <br />
+    <button class="btn btn-outline-primary">Kaydet</button>
+</form>

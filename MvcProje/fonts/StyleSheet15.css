@@ -1,0 +1,27 @@
+﻿.search-form {
+    display: flex; /* İçeriği yatay olarak hizalar */
+    align-items: center; /* İçeriği dikey olarak ortalar */
+}
+
+    .search-form input {
+        flex: 1; /* Giriş alanını genişletmek için esneklik ekler */
+        padding: 3px; /* Giriş alanı için iç kenar boşluğu */
+        border: 1px solid #ccc; /* Kenarlık ekler */
+        border-radius: 2px; /* Köşeleri yuvarlar */
+        margin-right: 7px; /* Sağa doğru boşluk ekler */
+        font-size: 16px; /* Yazı tipi boyutu */
+    }
+
+    .search-form button {
+        padding: 8px 8px; /* Düğme içerisindeki iç kenar boşluğu */
+        border: none; /* Kenarlık yok */
+        border-radius: 2px; /* Köşeleri yuvarlar */
+        background-color: #007bff; /* Arka plan rengi */
+        color: white; /* Yazı rengi */
+        cursor: pointer; /* İşaretçi türünü değiştir */
+        font-size: 16px; /* Yazı tipi boyutu */
+    }
+
+        .search-form button:hover {
+            background-color: #0056b3; /* Fare üzerine geldiğinde arka plan rengi */
+        }

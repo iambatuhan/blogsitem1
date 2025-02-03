@@ -1,0 +1,58 @@
+﻿@model EntitiyLayer.Concrete.Blog
+@{
+    ViewBag.Title = "AddNewBlog";
+    Layout = "~/Views/Shared/_AuhtorLayout.cshtml";
+}
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+@using (Html.BeginForm("AddNewBlog", "User", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    @Html.Label("Blog Başlığı")
+        @Html.TextBoxFor(x => x.BlogTitle, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.BlogTitle)
+    <div class="form-group">
+        <label for="name">Baslık *</label>
+        <input type="text" class="form-control" name="BlogTitle" required="">
+    </div>
+
+    <br />
+    @Html.Label("Kategori")
+
+    @Html.DropDownListFor(x => x.CategoryID, (List<SelectListItem>)ViewBag.values, new { @class = "form-control" })
+    @Html.ValidationMessageFor(x => x.Category.CategoryName)
+    <br />
+
+
+  
+    @Html.Label("Tarih")
+        @Html.TextBoxFor(x => x.BlogDate, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.BlogDate)
+    <br />
+
+    <br />
+    @Html.Label("İçerik")
+
+    <div class="form-group">
+        <label for="message">İçerik</label>
+        <textarea name="BlogContent" id="message" cols="30" rows="10" class="form-control" required=""></textarea>
+    </div>
+    <br />
+    @Html.Label("Resim Yolu")
+    <br />
+    <input type="file" name="BlogImage" required=""/>
+    <br />
+    <br />
+    <br />
+    <button class="btn btn-outline-primary" id="btn1">Kaydet</button>
+}
+
+<script>
+    $("#btn1").click(function () {
+
+        alert("Başarılı")
+
+    })
+</script>
+
+

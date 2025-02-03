@@ -1,0 +1,86 @@
+﻿/* Temel stil */
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+}
+
+/* Dropdown stil */
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Ana dropdown butonu */
+.dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Dropdown içeriği */
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    left: 0;
+}
+
+    /* Dropdown içeriği - linkler */
+    .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        /* Link hover efekti */
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+
+/* Alt dropdown stil */
+.sub-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Alt dropdown butonu */
+.sub-dropbtn {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    cursor: pointer;
+}
+
+/* Alt dropdown içeriği */
+.sub-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    top: 0;
+    left: 100%;
+}
+
+    /* Alt dropdown içeriği - linkler */
+    .sub-dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+    }
+
+        /* Alt link hover efekti */
+        .sub-dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }

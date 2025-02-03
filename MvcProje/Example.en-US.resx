@@ -1,0 +1,282 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Ad" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="AnaSayfa" xml:space="preserve">
+    <value>HOME PAGE</value>
+  </data>
+  <data name="Arka_Dingil" xml:space="preserve">
+    <value>REAR AXLE GROUP</value>
+  </data>
+  <data name="Askerlik Durumunuz" xml:space="preserve">
+    <value>Military Service</value>
+  </data>
+  <data name="Ağır_Devir" xml:space="preserve">
+    <value>Low Gear</value>
+  </data>
+  <data name="Ağır_tonaj" xml:space="preserve">
+    <value>HEAVY TONNAGE</value>
+  </data>
+  <data name="Baglantı" xml:space="preserve">
+    <value>LINKAGE GROUP</value>
+  </data>
+  <data name="Ceki_urunleri" xml:space="preserve">
+    <value>HITCHES GROUP</value>
+  </data>
+  <data name="Cinsiyet" xml:space="preserve">
+    <value>Gender</value>
+  </data>
+  <data name="Debriyaj" xml:space="preserve">
+    <value>CLUTCH GROUP</value>
+  </data>
+  <data name="Devam" xml:space="preserve">
+    <value>Read More</value>
+  </data>
+  <data name="Diferansiyel" xml:space="preserve">
+    <value>DIFFERENTIAL GROUP</value>
+  </data>
+  <data name="Direksiyon" xml:space="preserve">
+    <value>STREERING GROUP</value>
+  </data>
+  <data name="Dogum" xml:space="preserve">
+    <value>Date of birth</value>
+  </data>
+  <data name="Dogum_Yeri" xml:space="preserve">
+    <value>Place of birth</value>
+  </data>
+  <data name="Fren" xml:space="preserve">
+    <value>BRAKE GROUP</value>
+  </data>
+  <data name="Hakkımızda" xml:space="preserve">
+    <value>ABOUT US</value>
+  </data>
+  <data name="Hidrolik" xml:space="preserve">
+    <value>HYDRAULICS GROUP</value>
+  </data>
+  <data name="Kaldırma_Kapasitesi" xml:space="preserve">
+    <value>Dynamic Lift Capacity</value>
+  </data>
+  <data name="Kaporta" xml:space="preserve">
+    <value>PANAEL GROUP</value>
+  </data>
+  <data name="Kariyer" xml:space="preserve">
+    <value>CAREER</value>
+  </data>
+  <data name="Kategoriler" xml:space="preserve">
+    <value>CATEGORIES</value>
+  </data>
+  <data name="King_pinler" xml:space="preserve">
+    <value>KING PINS</value>
+  </data>
+  <data name="Konteyner_ kilidleri" xml:space="preserve">
+    <value>CONTAINER LOCKS</value>
+  </data>
+  <data name="Maaş" xml:space="preserve">
+    <value>Salary</value>
+  </data>
+  <data name="Mail" xml:space="preserve">
+    <value>Email Address</value>
+  </data>
+  <data name="Maksimum_Kol_Gücü" xml:space="preserve">
+    <value>Max Rotating Force</value>
+  </data>
+  <data name="Medeni Durumunuzu" xml:space="preserve">
+    <value>Marital Status</value>
+  </data>
+  <data name="Meslek" xml:space="preserve">
+    <value>Job</value>
+  </data>
+  <data name="Motor" xml:space="preserve">
+    <value>ENGİNE GROUP</value>
+  </data>
+  <data name="Not" xml:space="preserve">
+    <value>Grade average</value>
+  </data>
+  <data name="Okul" xml:space="preserve">
+    <value>School</value>
+  </data>
+  <data name="Park_ayakları" xml:space="preserve">
+    <value>Heavy Tonnage</value>
+  </data>
+  <data name="Refanslar" xml:space="preserve">
+    <value>Our References and Business Partners</value>
+  </data>
+  <data name="Römok_krikoları" xml:space="preserve">
+    <value>TRAİLER JACKS</value>
+  </data>
+  <data name="Seri_Devir" xml:space="preserve">
+    <value>High Gear</value>
+  </data>
+  <data name="Sertifikalar" xml:space="preserve">
+    <value>CERTIFICATES</value>
+  </data>
+  <data name="Siparis_Kodu" xml:space="preserve">
+    <value>Order Code</value>
+  </data>
+  <data name="Son_eklenen" xml:space="preserve">
+    <value>Recently Added Products</value>
+  </data>
+  <data name="Soyadı" xml:space="preserve">
+    <value>Surname</value>
+  </data>
+  <data name="Tanim" xml:space="preserve">
+    <value> Today, BMS has gained momentum in its sector with its sales both in the domestic market and abroad by producing parts for many leading tractor brands with more than 500 parts types.</value>
+  </data>
+  <data name="Tanıtım" xml:space="preserve">
+    <value>Their company is known as an organization that has achieved its leading position in the sector with its innovative approach. Customer-oriented service approach and continuous increase in quality standards are one of the important features that distinguish the company from its competitors. At the same time, as an institution that adds value to business life, it prioritizes employee satisfaction and team spirit. It aims to contribute to society with its commitment to ethical values ​​and awareness of social responsibility. It continues its leading role in its sector with innovative projects and strategies.</value>
+  </data>
+  <data name="Tanıtım1" xml:space="preserve">
+    <value>Employees are one of the most valuable assets contributing to the success of the company. Team members who stand out with their high skills in their areas of expertise and collaboration abilities create a positive atmosphere in the workplace and strengthen team spirit. Employees who shape the company culture with their motivation and work discipline always work in a reliable and professional manner. Additionally, they are noted for their attitude of being open to continuous development and learning.</value>
+  </data>
+  <data name="Tanıtım2" xml:space="preserve">
+    <value>This company is recognized as an organization that has established its leading position in the industry through its innovative approach. Their customer-focused service understanding and continuously rising quality standards are among the significant features that set them apart from their competitors. Additionally, as an institution that adds value to the business world, their emphasis on employee satisfaction and team spirit is commendable. Their commitment to ethical values and social responsibility aims to make a real contribution to society. They continue to play a pioneering role in their sector with innovative projects and strategies.</value>
+  </data>
+  <data name="Taşıma_Kapasitesi" xml:space="preserve">
+    <value>Static Lift Capacity</value>
+  </data>
+  <data name="Trailer Ürünleri" xml:space="preserve">
+    <value>TRAİLER PRODUCTS</value>
+  </data>
+  <data name="Traktör Ürünleri" xml:space="preserve">
+    <value>TRACTOR PRODUCTS</value>
+  </data>
+  <data name="Urunler" xml:space="preserve">
+    <value>PRODUCTS</value>
+  </data>
+  <data name="Çalışmak İstediğiniz Alan" xml:space="preserve">
+    <value>The Area You Want</value>
+  </data>
+  <data name="Ön_dingil" xml:space="preserve">
+    <value>FRONT AXLE GROUP</value>
+  </data>
+  <data name="Ürün_Fotografları" xml:space="preserve">
+    <value>Product Detailed Photographs</value>
+  </data>
+  <data name="Ürün_Kodu" xml:space="preserve">
+    <value>Product Code</value>
+  </data>
+  <data name="İletişim" xml:space="preserve">
+    <value>CONTACT US</value>
+  </data>
+  <data name="Şanzıman" xml:space="preserve">
+    <value>TRANSMISSON GROUP</value>
+  </data>
+</root>

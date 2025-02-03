@@ -1,0 +1,45 @@
+﻿@model IEnumerable<EntitiyLayer.Concrete.ArızaBildirme>
+    @{
+        ViewBag.Title = "AdminBlogList";
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+    <h2>Arıza Bildirim  Listesi</h2>
+    <br />
+    <link rel="stylesheet" href=" ~/miniblog/fonts/icomoon/StyleSheet5.css">
+    <table id="tbl1" class="table table-bordered">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Baslık</th>
+                <th>Kategori</th>
+                <th>Giren kişi</th>
+                <th>Acileyet Durumu </th>
+                <th>Çalışma Durumu</th>
+                <th>SİL</th>
+                <th>Güncelle</th>
+            </tr>
+        </thead>
+        @foreach (var x in Model)
+        {
+    <tr style="background-color: @(x.AtanmaDurum ? "lightgreen" : "lightcoral")">
+        <td>@x.ArızaKayıtID</td>
+        <td>@x.Acıklama</td>
+        <td>@x.MakineKodu</td>
+        <td>@x.GirenKisi</td>
+        <td>@x.AciliyetDurumu</td>
+        <td>@x.ÇalışmaDurum</td>
+        <td><a href="/ArızaBildirim/DeleteBlog/@x.ArızaKayıtID" class="custom-btn btn-5" id="btn1" style="text-align:center">Sil</a></td>
+        <td><a href="/ArızaBildirim/UpdateBlog/@x.ArızaKayıtID" class="custom-btn btn-8" id="btn1" style="text-align:center">Güncelle</a></td>
+    </tr>
+        }
+    </table>
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+    <script>
+        $('#tbl1').dataTable({});
+    </script>
+    <a href="/ArızaBildirim/Listele/" class="custom-btn btn-8" style="text-align:center">Yeni Ürün Ekle</a>

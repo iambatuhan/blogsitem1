@@ -1,0 +1,201 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>BAKIM | ADMİN</title>
+    <link rel="shortcut icon" href="~/Image/Path 5434.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="~/AdminLTE-3.0.4/dist/css/adminlte.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+</head>
+
+<body class="hold-transition sidebar-mini" style="background-color: white;">
+    <div class="wrapper">
+        <!-- Navbar -->
+        <nav class="main-header navbar navbar-expand navbar-white navbar-light">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a id="toggle-sidebar" class="nav-link" href="#" role="button">
+                        <i class="fas fa-bars"></i>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- Main Sidebar Container -->
+        <aside class="main-sidebar elevation-4">
+            <div class="sidebar" style="background-color: white;">
+                <!-- User Panel -->
+                <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                    <div class="image">
+                        <img src="~/AdminLTE-3.0.4/dist/img/user2-160x160.jpg" alt="User Image">
+                    </div>
+                    <div class="info">
+                        <a href="#" class="d-block" style="font-size: 15px;">Admin</a>
+                    </div>
+                </div>
+
+                <!-- Sidebar Menu -->
+                <nav class="mt-2">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                        <!-- Anasayfa -->
+                        <li class="nav-item">
+                            <a href="/AnaSayfa/AdminBlogList/" class="nav-link">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p style="font-size: 15px;">Anasayfa</p>
+                            </a>
+                        </li>
+
+                        <!-- Onarım Menüsü -->
+                        <li class="nav-item has-treeview">
+                            <a href="#onarimCollapse" class="nav-link" data-toggle="collapse" aria-expanded="false" aria-controls="onarimCollapse">
+                                <i class="nav-icon fas fa-tools"></i>
+                                <p style="font-size: 15px;">Onarım</p>
+                                <i class="right fas fa-angle-left"></i>
+                            </a>
+                            <ul class="nav nav-treeview collapse" id="onarimCollapse">
+                                <li class="nav-item">
+                                    <a href="/Onarım/AdminBlogList/" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p style="font-size: 15px;">Onarım Ata</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Onarım/AdminBlogList1/" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p style="font-size: 15px;">Başlanmamış Onarımlar</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Onarım/AdminBlogList2/" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p style="font-size: 15px;">Tamamlanmış Onarımlar</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Onarım/AdminBlogList3/" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p style="font-size: 15px;">Başlamış Onarımlar</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- Bölümler Menüsü -->
+                        <li class="nav-item has-treeview">
+                            <a href="#bolumlerCollapse" class="nav-link" data-toggle="collapse">
+                                <i class="nav-icon fas fa-building"></i>
+                                <p style="font-size: 15px;">Bölümler</p>
+                                <i class="right fas fa-angle-left"></i>
+                            </a>
+                            <ul class="nav nav-treeview collapse" id="bolumlerCollapse">
+                                <li class="nav-item">
+                                    <a href="/AnaSayfa/AdminBlogList1/" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p style="font-size: 15px;">Tüm Makineler</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/Anasayfa/CncList/" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p style="font-size: 15px;">CNC</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/AnaSayfa/KaynakList/" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p style="font-size: 15px;">Kaynak</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/AnaSayfa/Montaj/" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p style="font-size: 15px;">Montaj</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/AnaSayfa/Pres/" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p style="font-size: 15px;">Pres</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="/AnaSayfa/Talaslıİmalat/" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p style="font-size: 15px;">Talaşlı İmalat</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <!-- İşçi Sayfası -->
+                        <li class="nav-item">
+                            <a href="/Author/AuthorList/" class="nav-link">
+                                <i class="nav-icon fas fa-users"></i>
+                                <p style="font-size: 15px;">İşçi Sayfası</p>
+                            </a>
+                        </li>
+
+                        <!-- Arıza Bildirim -->
+                        <li class="nav-item">
+                            <a href="/ArızaBildirim/AdminBlogList/" class="nav-link">
+                                <i class="nav-icon fas fa-envelope"></i>
+                                <p style="font-size: 15px;">Arıza Bildirim</p>
+                            </a>
+                        </li>
+
+                        <!-- Stok Yönetimi -->
+                        <li class="nav-item">
+                            <a href="/Stok/AdminBlogList/" class="nav-link">
+                                <i class="nav-icon fas fa-boxes"></i>
+                                <p style="font-size: 15px;">Stok Yönetimi</p>
+                            </a>
+                        </li>
+
+                        <!-- Çıkış Yap -->
+                        <li class="nav-item">
+                            <a href="/AnaSayfa/LogOut/" class="nav-link">
+                                <i class="nav-icon fas fa-sign-out-alt"></i>
+                                <p style="font-size: 15px;">Çıkış Yap</p>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- Content Wrapper. Contains page content -->
+        <div class="content-wrapper">
+            <section class="content-header">
+                <div class="container-fluid">
+                    @RenderBody()
+                </div>
+            </section>
+        </div>
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark"></aside>
+    </div>
+
+    <!-- jQuery -->
+    <script src="~/AdminLTE-3.0.4/plugins/jquery/jquery.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/AdminLTE-3.0.4/dist/js/adminlte.min.js"></script>
+
+    <script>
+        // Sadece ızgaraya tıklayınca menünün açılması için
+        $(document).ready(function () {
+            $('#toggle-sidebar').on('click', function (e) {
+                e.preventDefault();
+                $('body').toggleClass('sidebar-collapse'); // sidebar durumu değiştir
+            });
+        });
+    </script>
+</body>
+</html>

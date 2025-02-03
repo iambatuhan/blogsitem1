@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "mssql1": {
+      "type": "mssql.onprem",
+      "connectionId": "ConnectionStrings:DESKTOP-KAD3H13",
+      "secretStore": "AzureAppSettings"
+    }
+  }
+}

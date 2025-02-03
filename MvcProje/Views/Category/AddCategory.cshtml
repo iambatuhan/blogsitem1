@@ -1,0 +1,28 @@
+﻿@model EntitiyLayer.Concrete.Category
+@{
+    ViewBag.Title = "AddCategory";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+@using (Html.BeginForm("AddCategory", "Category", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @*@Html.Label("Blog Başlığı")
+        @Html.TextBoxFor(x => x.BlogTitle, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.BlogTitle)*@
+    <div class="form-group">
+        <label for="name">Baslık *</label>
+        <input type="text" class="form-control" name="CategoryName" required="">
+    </div>
+    <div class="form-group">
+        <label for="name">Acıklama *</label>
+        <input type="text" class="form-control" name="CategoryAcıklama" required="">
+    </div>
+    <br />
+    <br />
+    <button class="btn btn-outline-primary" id="btn1">Kaydet</button>
+    <script>
+        $('#Btn1').click(function () {
+            alert("Kategori Başarılı bir şekilde eklendi")
+        });
+    </script>
+}

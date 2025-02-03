@@ -1,0 +1,47 @@
+﻿@model IEnumerable<EntitiyLayer.Concrete.Blog>
+@{
+    ViewBag.Title = "Montaj";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Makine  Liste</h2>
+<br />
+<link rel="stylesheet" href=" ~/miniblog/fonts/icomoon/StyleSheet5.css">
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Makine Kody</th>
+            <th>Kategori</th>
+            <th>Çalışma Durumu</th>
+            <th>Tarih</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+            <th>Detaylar</th>
+        </tr>
+    </thead>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>@x.BlogID</td>
+            <td>@x.MakineKodu</td>
+            <td>@x.Category.CategoryAcıklama</td>
+            <td>@x.Calısma_Durum</td>
+            <td>@x.BlogDate.ToShortDateString()</td>
+            <td><a href="/AnaSayfa/DeleteBlog/@x.BlogID" class="custom-btn btn-1" style="text-align:center" target="_self" id="btn1">Sil</a></td>
+            <td><a href="/AnaSayfa/UpdateBlog/@x.BlogID " class="custom-btn btn-6" style="text-align:center" target="_blank">Güncelle</a></td>
+            <td><a href="/AnaSayfa/ÜrünDetay/@x.BlogID" class="custom-btn btn-7" style="text-align:center">Detaylar</a></td>
+        </tr>
+    }
+</table>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+<script>
+    $('#tbl1').dataTable({});
+</script>
+<a href="/AnaSayfa/AddNewBlog/" class="custom-btn btn-8" style="text-align:center">Yeni Ürün Ekle</a>
+

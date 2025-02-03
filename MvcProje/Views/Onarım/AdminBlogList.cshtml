@@ -1,0 +1,62 @@
+﻿@model IEnumerable<EntitiyLayer.Concrete.Onarım>
+
+@{
+    ViewBag.Title = "AdminBlogList";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2>Makine Liste</h2>
+<br />
+<link rel="stylesheet" href="~/miniblog/fonts/icomoon/StyleSheet5.css">
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Personel</th>
+            <th>Başlama Saati</th>
+            <th>Bitis Saati</th>
+            <th>Makine Kodu</th>
+            <th>Yapılacak İş</th>
+            <th>Yapılması Planlanan İş</th>
+            <th>Yapılan İş</th>
+            <th>Aciliyet Durum</th>
+            <th>Kategori Adı</th>
+            <th>Bitis Durum</th>
+            <th>Kullanılan Malzemeler</th>
+            <th>Sil</th>
+            <th>Güncelle</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            <tr style="background-color: @(x.BitisDurum ? "#c6efce" : "#f8d7da");">
+                <td>@x.OnarımID</td>
+                <td>@x.Author.AuthorName</td>
+                <td>@x.BaşlamaSaati.ToLongDateString()</td>
+                <td>@x.BitisSaati.ToLongDateString()</td>
+    
+                <td>@x.MakineKodu</td>
+                <td>@x.YapılacakIs</td>
+                <td>@x.Yapılmasıİs</td>
+                <td>@x.Yapılanİs</td>
+                <td>@x.AcileyetDurumu</td>
+                <td>@x.KategoriAdı</td>
+                <td>@x.BitisDurum.ToString()</td>
+                <td>@x.KullanılanMalzemeler</td>
+                <td><a href="/Onarım/DeleteBlog/@x.OnarımID" class="custom-btn btn-1" style="text-align:center" target="_self" id="btn1">Sil</a></td>
+                <td><a href="/Onarım/UpdateBlog/@x.OnarımID" class="custom-btn btn-5" style="text-align:center" target="_self" id="btn1">Güncelle</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js"></script>
+<script>
+    $('#tbl1').dataTable({});
+</script>
+<a href="/Onarım/AddNewBlog/" class="custom-btn btn-8" style="text-align:center;transform:translate(400px,0px)">Onarım Ekle</a>
+<a href="/Onarım/Listeleme/" class="custom-btn btn-8" style="text-align:center">Listeleme</a>

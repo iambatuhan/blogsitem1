@@ -1,0 +1,250 @@
+﻿@model IEnumerable<EntitiyLayer.Concrete.Blog>
+@{
+    ViewBag.Title = "Admin Blog List";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link rel="stylesheet" href="~/miniblog/fonts/icomoon/StyleSheet5.css">
+<link href="~/fonts/StyleSheet18.css" rel="stylesheet" />
+<style>
+    .green-row {
+        background-color: lightgreen;
+    }
+
+    .red-row {
+        background-color: lightcoral;
+    }
+
+    .orange-row {
+        background-color: orange;
+    }
+</style>
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <!-- Toplam Makine -->
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-chart-line fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Toplam Makine</p>
+                    <h6 class="mb-0">@ViewBag.TotalCount</h6>
+                </div>
+            </div>
+        </div>
+        <!-- Bildirilen Arıza -->
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Bildirilen Arıza</p>
+                    <h6 class="mb-0">@ViewBag.arıza</h6>
+                </div>
+            </div>
+        </div>
+        <!-- İşçi -->
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-chart-area fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">İşçi</p>
+                    <h6 class="mb-0">@ViewBag.isci</h6>
+                </div>
+            </div>
+        </div>
+        <!-- Bitiş Durumu -->
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-chart-pie fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Bitiş Durumu</p>
+                    <h6 class="mb-0">@ViewBag.bitis</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<br />
+<br />
+
+<div class="row">
+    <div class="col-md-6">
+        <!-- Blog Tablosu -->
+        <table id="blogTable" class="table table-bordered" style="width: 100%; height: auto;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Başlık</th>
+                    <th>Kategori</th>
+                    <th>Çalışma Durumu</th>
+                    <th>Tarih</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in Model)
+                {
+                    <tr style="background-color: @(x.Calısma_Durum ? "lightgreen" : "lightcoral")">
+                        <td>@x.BlogID</td>
+                        <td>@x.MakineKodu</td>
+                        <td>@x.Category.CategoryAcıklama</td>
+                        <td>@(x.Calısma_Durum ? "Çalışıyor" : "Çalışmıyor")</td>
+                        <td>@x.BlogDate.ToShortDateString()</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+        <!-- Tablo 2 -->
+        <table id="tbl2" class="table table-bordered" style="width: 100%; height: auto; margin: 0 auto;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                 
+                    <th>Bölüm</th>
+                    <th>Yapacak Kişi</th>
+                    <th>Başlama Saati</th>
+                    <th>Bitiş Saati</th>
+                    <th>Yapılacak İşlem</th>
+                    <th>Yapılan İşlem</th>
+                    <th>Bitis Durum</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in ViewBag.onarıms)
+                {
+                    <tr class="@(x.BitisDurum ? "green-row" : (x.AraVerme && !x.BitisDurum ? "orange-row" : "red-row"))">
+                        <td>@x.OnarımID</td>
+              
+                        <td>@x.KategoriAdı</td>
+                        <td>@x.Author.AuthorName</td>
+                        <td>@x.BaşlamaSaati</td>
+                        <td>@x.BitisSaati</td>
+                        <td>@x.YapılacakIs</td>
+                        <td>@x.Yapılanİs</td>
+                        <td>@(x.BitisDurum ? "Bitti" : "Devam Ediyor")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <br />
+        <br />
+        <br />
+        <br />
+       
+        <table id="tbl3" class="table table-bordered" style="width: 100%; height: auto; margin: 0 auto;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Başlık</th>
+                    <th>Kategori</th>
+                    <th>Giren Kişi</th>
+                    <th>Aciliyet Durumu</th>
+                    <th>Çalışma Durumu</th>
+                    <th>Atanma Durumu</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var x in ViewBag.arızabildirim)
+                {
+                    <tr style="background-color: @(x.AtanmaDurum ? "lightgreen" : "lightcoral")">
+                        <td>@x.ArızaKayıtID</td>
+                        <td>@x.Acıklama</td>
+                        <td>@x.MakineKodu</td>
+                        <td>@x.GirenKisi</td>
+                        <td>@x.AciliyetDurumu</td>
+                        <td>@x.ÇalışmaDurum</td>
+                        <td>@x.AtanmaDurum</td>
+
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <div class="col-md-6">
+        <!-- Grafik: Makinelerinin Çalışma Durumu -->
+        <div id="pie_chart" style="width: 90%; height: 200px; margin: 0 auto;"></div>
+        <br />
+        <br />
+        <!-- Grafik: Yazarların Onarım Sayıları -->
+        <div id="authorsRepairChart" style="width: 90%; height: 200px; margin: 0 auto;"></div>
+        <br />
+        <br />
+        <br />
+  
+        <!-- Grafik: Arıza Durumu -->
+        <div id="faultyLocationsChart" style="width: 90%; height: 200px; margin: 0 auto;"></div>
+        <br />
+        <br />
+        <br />
+        <br />
+
+
+    </div>
+</div>
+<br />
+<br />
+<br />
+<!-- Google Charts -->
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', { packages: ['corechart'] });
+    google.charts.setOnLoadCallback(drawChart);
+    google.charts.setOnLoadCallback(drawAuthorsRepairChart);
+    google.charts.setOnLoadCallback(drawFaultyLocationsChart);
+    function drawChart() {
+    var machineStatus = @Html.Raw(Json.Encode(ViewBag.MachineStatus));
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Status');
+    data.addColumn('number', 'Count');
+    for (var i = 0; i < machineStatus.length; i++) {
+        data.addRow([machineStatus[i].Status, machineStatus[i].Count]);
+    }
+    var options = {
+        title: 'Makinelerin Çalışma Durumu',
+        is3D: true,
+        slices: {
+            0: { color: 'red' },   // "Çalışıyor" durumunu mavi yap
+            1: { color: 'green' }     // "Çalışmıyor" durumunu kırmızı yap
+        }
+    };
+    var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
+    chart.draw(data, options);
+}
+    function drawAuthorsRepairChart() {
+    var authorsWithRepairCounts = @Html.Raw(ViewBag.AuthorsWithRepairCounts);
+    var data = new google.visualization.DataTable();
+    data.addColumn('string', 'Yazar Adı'); // Yazar adını göster
+    data.addColumn('number', 'Onarım Sayısı');
+    for (var i = 0; i < authorsWithRepairCounts.length; i++) {
+        data.addRow([authorsWithRepairCounts[i].AuthorName, authorsWithRepairCounts[i].RepairCount]);
+    }
+    var options = {
+        title: 'Personel Onarım Sayıları',
+        hAxis: { title: 'Onarım Sayısı', minValue: 0 },
+        vAxis: { title: 'Yazar Adı' }, // Yazar adı
+        legend: { position: 'none' },
+    };
+    var chart = new google.visualization.BarChart(document.getElementById('authorsRepairChart'));
+    chart.draw(data, options);
+}
+    function drawFaultyLocationsChart() {
+        var faultyData = @Html.Raw(ViewBag.ArızaData);
+        var data = new google.visualization.DataTable();
+        data.addColumn('string', 'Kategori');
+        data.addColumn('number', 'Arıza Sayısı');
+        for (var i = 0; i < faultyData.length; i++) {
+            data.addRow([faultyData[i].CategoryName, faultyData[i].Count]);
+        }
+        var options = {
+            title: 'Bölümlere  Göre Arıza Sayısı',
+            is3D: true,
+        };
+        var chart = new google.visualization.PieChart(document.getElementById('faultyLocationsChart'));
+        chart.draw(data, options);
+    }
+</script>

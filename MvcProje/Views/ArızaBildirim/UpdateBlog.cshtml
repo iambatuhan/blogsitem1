@@ -1,0 +1,119 @@
+﻿@model EntitiyLayer.Concrete.ArızaBildirme
+@{
+    ViewBag.Title = "UpdateBlog";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link rel="stylesheet" href=" ~/miniblog/fonts/icomoon/StyleSheet5.css">
+<form id="updateForm" class="form-group" method="post">
+    @Html.Label("Blog ID")
+    @Html.TextBoxFor(x => x.ArızaKayıtID, new { @class = "form-control", id = "ArızaKayıtID" })
+    <span id="errorArızaKayıtID" class="text-danger"></span>
+
+    @Html.Label("Kategori")
+    @Html.DropDownListFor(x => x.CategoryID, ViewBag.values != null ? (List<SelectListItem>)ViewBag.values : new List<SelectListItem>(), new { @class = "form-control", id = "CategoryID" })
+    <span id="errorCategoryID" class="text-danger"></span>
+
+    @Html.Label("Giren Kisi")
+    @Html.TextAreaFor(x => x.GirenKisi, new { @class = "form-control", id = "GirenKisi" })
+    <span id="errorGirenKisi" class="text-danger"></span>
+
+    @Html.Label("Makine Adı")
+    @Html.TextAreaFor(x => x.MakineAdı, new { @class = "form-control", id = "MakineAdı" })
+    <span id="errorMakineAdı" class="text-danger"></span>
+
+    @Html.Label("Makine Kodu")
+    @Html.TextAreaFor(x => x.MakineKodu, new { @class = "form-control", id = "MakineKodu" })
+    <span id="errorMakineKodu" class="text-danger"></span>
+
+    @Html.Label("Çalışma Durum:")
+    @Html.DropDownListFor(x => x.ÇalışmaDurum, new SelectList(new[]{
+           new { value = "Çalışıyor", Text = "Çalışıyor" },
+           new { value = "Çalışmıyor", Text = "Çalışmıyor" },
+       }, "Value", "Text"), "Seçiniz", new { @class = "form-control", id = "ÇalışmaDurum" })
+    <span id="errorÇalışmaDurum" class="text-danger"></span>
+
+    @Html.Label("Aciliyet Durumu:")
+    @Html.DropDownListFor(x => x.AciliyetDurumu, new SelectList(new[]{
+           new { value = "Çalışıyor", Text = "Çalışıyor" },
+           new { value = "Çalışmıyor", Text = "Çalışmıyor" },
+       }, "Value", "Text"), "Seçiniz", new { @class = "form-control", id = "AciliyetDurumu" })
+    <span id="errorAciliyetDurumu" class="text-danger"></span>
+
+    <br />
+    <button id="Btn1" type="button" class="btn btn-3">Kaydet</button>
+</form>
+
+<script>
+    document.getElementById('Btn1').addEventListener('click', function (e) {
+        // Form alanlarını kontrol et
+        var isValid = true;
+
+        // Blog ID kontrolü
+        var arızaKayıtID = document.getElementById('ArızaKayıtID').value;
+        if (arızaKayıtID === '') {
+            document.getElementById('errorArızaKayıtID').innerText = 'Blog ID boş geçilemez';
+            isValid = false;
+        } else {
+            document.getElementById('errorArızaKayıtID').innerText = '';
+        }
+
+        // Kategori kontrolü
+        var categoryID = document.getElementById('CategoryID').value;
+        if (categoryID === '') {
+            document.getElementById('errorCategoryID').innerText = 'Kategori boş geçilemez';
+            isValid = false;
+        } else {
+            document.getElementById('errorCategoryID').innerText = '';
+        }
+
+        // Giren Kisi kontrolü
+        var girenKisi = document.getElementById('GirenKisi').value;
+        if (girenKisi === '') {
+            document.getElementById('errorGirenKisi').innerText = 'Giren Kişi boş geçilemez';
+            isValid = false;
+        } else {
+            document.getElementById('errorGirenKisi').innerText = '';
+        }
+
+        // Makine Adı kontrolü
+        var makineAdı = document.getElementById('MakineAdı').value;
+        if (makineAdı === '') {
+            document.getElementById('errorMakineAdı').innerText = 'Makine Adı boş geçilemez';
+            isValid = false;
+        } else {
+            document.getElementById('errorMakineAdı').innerText = '';
+        }
+
+        // Makine Kodu kontrolü
+        var makineKodu = document.getElementById('MakineKodu').value;
+        if (makineKodu === '') {
+            document.getElementById('errorMakineKodu').innerText = 'Makine Kodu boş geçilemez';
+            isValid = false;
+        } else {
+            document.getElementById('errorMakineKodu').innerText = '';
+        }
+
+        // Çalışma Durum kontrolü
+        var çalışmaDurum = document.getElementById('ÇalışmaDurum').value;
+        if (çalışmaDurum === '') {
+            document.getElementById('errorÇalışmaDurum').innerText = 'Çalışma Durumu boş geçilemez';
+            isValid = false;
+        } else {
+            document.getElementById('errorÇalışmaDurum').innerText = '';
+        }
+
+        // Aciliyet Durumu kontrolü
+        var aciliyetDurumu = document.getElementById('AciliyetDurumu').value;
+        if (aciliyetDurumu === '') {
+            document.getElementById('errorAciliyetDurumu').innerText = 'Aciliyet Durumu boş geçilemez';
+            isValid = false;
+        } else {
+            document.getElementById('errorAciliyetDurumu').innerText = '';
+        }
+
+        // Eğer tüm alanlar doluysa formu gönder
+        if (isValid) {
+            document.getElementById('updateForm').submit();
+        }
+    });
+</script>

@@ -1,0 +1,51 @@
+﻿@model EntitiyLayer.Concrete.Stok
+@{
+    ViewBag.Title = "AddNewBlog";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+@using (Html.BeginForm("AddNewBlog", "Stok", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+<div class="container">
+    <div class="row">
+   
+        <div class="col-md-6">
+            @Html.Label("Bölümü")
+            @Html.DropDownListFor(x => x.Bölümü, ViewBag.values2 != null ? (List<SelectListItem>)ViewBag.values2 : new List<SelectListItem>(), new { @class = "form-control" })
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            @Html.Label("Parça Adı")
+            @Html.TextAreaFor(x => x.ParçaAdı, new { @class = "form-control" })
+        </div>
+        <div class="col-md-6">
+            @Html.Label("Miktar")
+            @Html.TextAreaFor(x => x.Miktar, new { @class = "form-control" })
+        </div>
+    </div>
+    <br />
+    <button class="btn btn-outline-primary" id="btn1">Kaydet</button>
+</div> <!-- Bu div'in kapanışı eksikti -->} <!-- Bu kapanış doğru şekilde yerleştirilmeli -->
+
+<script>
+    // SweetAlert ile başarılı mesaj gösterimi
+    $('#btn1').click(function (event) {
+        event.preventDefault(); // Formun otomatik olarak submit olmasını engeller
+        swal({
+            title: "Başarılı!",
+            text: "Arıza  başarılı bir şekilde gönderildi",
+            icon: "success",
+            button: "Tamam",
+        }).then(() => {
+            $('form').submit(); // Mesajdan sonra formu gönderir
+        });
+    });
+</script>

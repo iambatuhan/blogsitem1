@@ -1,0 +1,90 @@
+﻿@*@model IEnumerable<EntitiyLayer.Concrete.Comment>
+@{
+    ViewBag.Title = "GetCommentByBlog";
+    Layout = "~/Views/Shared/_AuhtorLayout.cshtml";
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<body class="hold-transition sidebar-mini">
+
+
+
+    <div class="wrapper">
+
+        <section class="content">
+
+            <div class="container-fluid">
+
+
+
+
+
+                <div class="row">
+
+                    <div class="col-md-12">
+
+
+
+                        <div class="timeline">
+                            @foreach (var x in Model)
+                            {
+
+
+                                <div class="time-label">
+
+                                    <span class="bg-blue"> @(((DateTime)@x.Tarih).ToString("dd-MMM-yyyy"))</span>
+
+                                </div>
+
+
+
+                                <div>
+
+                                    <i class="fas fa-comment bg-red"></i>
+
+                                    <div class="timeline-item">
+
+
+
+                                        <h3 class="timeline-header"><a href="#">@x.UserName</a>- @x.Mail</h3>
+
+                                        <div class="timeline-body">
+
+                                            @x.CommentText
+
+                                        </div>
+
+                                       
+
+                                    </div>
+
+                                </div>
+
+
+                            }
+                        </div>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+
+        </section>
+
+
+
+    </div>
+
+
+
+</body>
+
+</html>*@
+

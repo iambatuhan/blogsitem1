@@ -1,0 +1,25 @@
+﻿/* Butonlar için duyarlı stil */
+.action-btn {
+    display: block;
+    margin: 10px auto;
+    text-align: center;
+}
+
+/* Tablonun responsive görünümü */
+@media (max-width: 768px) {
+    .table-responsive {
+        display: block;
+        overflow-x: auto;
+    }
+
+    .table th, .table td {
+        white-space: nowrap;
+    }
+}
+
+@media (max-width: 576px) {
+    .action-btn {
+        width: 100%;
+        margin: 5px 0;
+    }
+}

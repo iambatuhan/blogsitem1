@@ -1,0 +1,21 @@
+﻿@model EntitiyLayer.Concrete.Admin
+@{
+    ViewBag.Title = "AddNewAdmin";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("AddNewAdmin", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <br />
+
+    @Html.Label("Admin Adı")
+    @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", @required = "required" })
+
+    <br />
+
+    <br />
+    <br />
+    @Html.Label("Password")
+    @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @required = "required" })
+    <button class="btn btn-outline-primary">Kaydet</button>
+}

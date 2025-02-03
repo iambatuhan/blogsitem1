@@ -1,0 +1,213 @@
+﻿@model IEnumerable<EntitiyLayer.Concrete.Onarım>
+@{
+    ViewBag.Title = "BlogList";
+    Layout = "~/Views/Shared/_AuhtorLayout.cshtml";
+}
+<h2>Makine Listesi</h2>
+<br />
+<link rel="stylesheet" href="~/miniblog/fonts/icomoon/StyleSheet5.css">
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Personel</th>
+            <th>Başlama Saati</th>
+            <th>Bitis Saati</th>
+            <th>Makine Kodu</th>
+            <th>Yapılacak İş</th>
+            <th>Yapılması Planlanan İş</th>
+            <th>Yapılan İş</th>
+            <th>Aciliyet Durumu</th>
+            <th>Kategori Adı</th>
+            <th>Bitis Durumu</th>
+            <th>Başla</th>
+            <th>Bitir</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            if (@x.BitisDurum == false)
+            {
+                <tr>
+                    <td>@x.OnarımID</td>
+                    <td>@x.Author.AuthorName</td>
+                    <td>@x.BaşlamaSaati.ToLongDateString()</td>
+                    <td>@x.BitisSaati.ToLongDateString()</td>
+
+                    <td>@x.MakineKodu</td>
+                    <td>@x.YapılacakIs</td>
+                    <td>@x.Yapılmasıİs</td>
+                    <td>@x.Yapılanİs</td>
+                    <td>@x.AcileyetDurumu</td>
+                    <td>@x.BitisDurum</td>
+                    <td>
+                        <a href="#" class="custom-btn btn-1" data-toggle="modal" data-target="#updateModal1-@x.OnarımID">Başlat</a>
+                    </td>
+                    <td>
+                        <a href="#" class="custom-btn btn-2" data-toggle="modal" data-target="#updateModal2-@x.OnarımID">Bitir</a>
+                    </td>
+                    <td>
+                        <a href="#" class="custom-btn btn-3" data-toggle="modal" data-target="#updateModal3-@x.OnarımID">Ara Verme</a>
+                    </td>
+                </tr>
+                @* Güncelle Modal 1 *@
+                <div class="modal fade" id="updateModal1-@x.OnarımID" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel1-@x.OnarımID" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="updateModalLabel1-@x.OnarımID">Başlat</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="updateForm1-@x.OnarımID" class="form-group">
+                                    @Html.HiddenFor(model => x.OnarımID)
+                                    <label for="Yapılanİs">Yapılacak İs</label>
+                                    <textarea name="Yapılanİs" id="Yapılanİs-1-@x.OnarımID" class="form-control" required>@x.Yapılanİs</textarea>
+                                    <br />
+                                    <button type="button" class="btn btn-outline-primary submit-btn1" data-id="@x.OnarımID">Kaydet</button>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* Güncelle Modal 2 *@
+                <div class="modal fade" id="updateModal2-@x.OnarımID" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel2-@x.OnarımID" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="updateModalLabel2-@x.OnarımID">İşi Güncelle</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>s
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="updateForm2-@x.OnarımID" class="form-group">
+                                    @Html.HiddenFor(model => x.OnarımID)
+                                    <label for="Yapılanİs2">Yapılan İş</label>
+                                    <textarea name="Yapılanİs" id="Yapılanİs-2-@x.OnarımID" class="form-control" required>@x.Yapılanİs</textarea>
+
+                                    <label for="KullanılanMalzemeler2">Kullanılan Malzemeler</label>
+                                    <textarea name="KullanılanMalzemeler" id="KullanılanMalzemeler-2-@x.OnarımID" class="form-control" required>@x.KullanılanMalzemeler</textarea>
+                                    <br />
+                                    <button type="button" class="btn btn-outline-primary submit-btn2" data-id="@x.OnarımID">Kaydet</button>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                @* Güncelle Modal 3 *@
+                <div class="modal fade" id="updateModal3-@x.OnarımID" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel3-@x.OnarımID" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="updateModalLabel3-@x.OnarımID">Ara Verme Sebebi</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form id="updateForm3-@x.OnarımID" class="form-group">
+                                    @Html.HiddenFor(model => x.OnarımID)
+                                    <label for="AraVermeNedeni">Ara Verme Sebebi</label>
+                                    <textarea name="AraVermeNedeni" id="AraVermeNedeni-3-@x.OnarımID" class="form-control" required>@x.AraVermeNedeni</textarea>
+                                    <br />
+                                    <button type="button" class="btn btn-outline-primary submit-btn3" data-id="@x.OnarımID">Kaydet</button>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </tbody>
+</table>
+<!-- Gerekli CSS ve JS Dosyaları -->
+<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+<script>
+    $('#tbl1').dataTable({});
+</script>
+<script>
+    // UpdateBlog1 için AJAX ile form gönderimi
+    $(document).on('click', '.submit-btn1', function () {
+        var id = $(this).data("id");
+        var formData = {
+            OnarımID: id,
+            Yapılanİs: $('#Yapılanİs-1-' + id).val()
+        };
+        $.ajax({
+            url: '/Onarım/UpdateBlog1/',
+            type: 'POST',
+            data: formData,
+            success: function (response) {
+                if (response.success) {
+                    alert("Başarılı bir şekilde kaydedildi (1)");
+                } else {
+                    alert("Bir hata oluştu.");
+                }
+            }
+        });
+    });
+    // UpdateBlog2 için AJAX ile form gönderimi
+    $(document).on('click', '.submit-btn2', function () {
+        var id = $(this).data("id");
+        var formData = {
+            OnarımID: id,
+            Yapılanİs: $('#Yapılanİs-2-' + id).val(),
+            KullanılanMalzemeler: $('#KullanılanMalzemeler-2-' + id).val()
+        };
+        $.ajax({
+            url: '/Onarım/UpdateBlog2/',
+            type: 'POST',
+            data: formData,
+            success: function (response) {
+                if (response.success) {
+                    alert("Başarılı bir şekilde kaydedildi (2)");
+                } else {
+                    alert("Bir hata oluştu.");
+                }
+            }
+        });
+    });
+    // UpdateBlog3 için AJAX ile form gönderimi
+    $(document).on('click', '.submit-btn3', function () {
+        var id = $(this).data("id");
+        var formData = {
+            OnarımID: id,
+            AraVermeNedeni: $('#AraVermeNedeni-3-' + id).val()
+        };
+        $.ajax({
+            url: '/Onarım/UpdateBlog3/',
+            type: 'POST',
+            data: formData,
+            success: function (response) {
+                if (response.success) {
+                    alert("Başarılı bir şekilde kaydedildi (3)");
+                } else {
+                    alert("Bir hata oluştu.");
+                }
+            }
+        });
+    });
+</script>

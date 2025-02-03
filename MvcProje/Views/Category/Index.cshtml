@@ -1,0 +1,109 @@
+﻿@model IEnumerable<EntitiyLayer.Concrete.Category>
+@{
+    ViewBag.Title = "Index";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resim Yakınlaştırma, Uzaklaştırma ve Sürükleme</title>
+    <style>
+        /* Stil dosyası - pop-up için arka plan */
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Yarı saydam siyah arka plan */
+            display: none; /* Başlangıçta gizli */
+            z-index: 999; /* Pop-up'ı diğer içeriklerin üstüne getir */
+        }
+        #popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+            display: none; /* Başlangıçta gizli */
+            z-index: 1000; /* Pop-up'ı diğer içeriklerin üstüne getir */
+            overflow: hidden; /* Taşma durumunda kenarları kes */
+            cursor: move; /* Sürükleme işareti */
+        }
+            #popup img {
+                width: 500px; /* Sabit genişlik */
+                height: 400px; /* Sabit yükseklik */
+                cursor: grab; /* Sürükleme işareti */
+                transition: transform 0.2s ease; /* Yakınlaştırma/uzaklaştırma için geçiş efekti */
+            }
+    </style>
+</head>
+<body>
+    <!-- Resim pop-up için temel yapı -->
+    <div id="overlay"></div>
+    <div id="popup">
+        <img id="popup-image" src="" alt="Popup Image">
+    </div>
+    <!-- Resim -->
+    <img src="~/miniblog/images/1617490_725722570875181_7755981639258766063_o.jpg" alt="Image" onclick="openPopup(this.src)">
+    <script>
+        // JavaScript ile pop-up açma işlevi
+        function openPopup(imageSrc) {
+            var overlay = document.getElementById('overlay');
+            var popup = document.getElementById('popup');
+            var popupImage = document.getElementById('popup-image');
+            // Pop-up içeriğini değiştir
+            popupImage.src = imageSrc;
+            // Overlay ve pop-up'ı görünür yap
+            overlay.style.display = 'block';
+            popup.style.display = 'block';
+            // Pop-up içindeki resme yakınlaştırma/uzaklaştırma ve sürükleme (pan) özelliği ekle
+            let scale = 1;
+            let mouseX, mouseY;
+            let translateX = 0;
+            let translateY = 0;
+            let isDragging = false;
+            popupImage.addEventListener('wheel', function (e) {
+                e.preventDefault(); // Sayfanın kaymasını engellemek için varsayılan olayı engelle
+                const zoomAmount = e.deltaY > 0 ? 0.9 : 1.1; // Aşağı kaydırma: uzaklaştırma, yukarı kaydırma: yakınlaştırma
+                scale *= zoomAmount;
+                // Resmi ölçeğe göre yeniden boyutlandır
+                popupImage.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+            });
+            popupImage.addEventListener('mousedown', function (e) {
+                isDragging = true;
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+            window.addEventListener('mousemove', function (e) {
+                if (isDragging) {
+                    const deltaX = e.clientX - mouseX;
+                    const deltaY = e.clientY - mouseY;
+                    translateX += deltaX;
+                    translateY += deltaY;
+                    mouseX = e.clientX;
+                    mouseY = e.clientY;
+
+                    // Resmi sürükleme (pan) işlemi
+                    popupImage.style.transform = `scale(${scale}) translate(${translateX}px, ${translateY}px)`;
+                }
+            });
+            window.addEventListener('mouseup', function () {
+                isDragging = false;
+            });
+        }
+        // Overlay veya pop-up dışına tıklanınca pop-up'ı kapatma işlevi
+        document.getElementById('overlay').addEventListener('click', function () {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('popup').style.display = 'none';
+            // Resmi varsayılan ölçekte sıfırla
+            document.getElementById('popup-image').style.transform = 'scale(1) translate(0, 0)';
+        });
+    </script>
+</body>
+</html>
+s

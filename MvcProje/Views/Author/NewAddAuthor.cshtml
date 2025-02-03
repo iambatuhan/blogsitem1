@@ -1,0 +1,70 @@
+﻿@model EntitiyLayer.Concrete.Author
+@{
+    ViewBag.Title = "New Add Author";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Yeni Yazar Ekle</h2>
+<form class="form-group" method="post" id="authorForm">
+    <br />
+    @Html.Label("Yazar Ad-Soyad")
+    @Html.TextBoxFor(x => x.AuthorName, new { @class = "form-control", required = "required" })
+    <br />
+
+    <br />
+    @Html.Label("Hakkında")
+    @Html.TextBoxFor(x => x.AuthorAbout, new { @class = "form-control", required = "required" })
+    <br />
+
+    <br />
+    @Html.Label("Mail")
+    @Html.TextAreaFor(x => x.Mail, new { @class = "form-control", required = "required" })
+    <br />
+
+    @Html.Label("Yaptığı Meslek")
+    @Html.TextAreaFor(x => x.AuthorTitle, new { @class = "form-control", required = "required" })
+    <br />
+
+    @Html.Label("Şifre")
+    @Html.TextAreaFor(x => x.Password, new { @class = "form-control", required = "required" })
+    <br />
+
+    <button type="button" class="btn btn-outline-primary" id="btnSubmit">Kaydet</button>
+</form>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $('#btnSubmit').click(function (event) {
+        event.preventDefault(); // Formun otomatik olarak submit olmasını engeller
+
+        // Boş alan kontrolü
+        var isValid = true;
+        $('input[required], textarea[required]').each(function() {
+            if ($(this).val() === '') {
+                isValid = false;
+                $(this).css('border-color', 'red'); // Hatalı alanı kırmızı yap
+            } else {
+                $(this).css('border-color', '#ced4da'); // Doğru alanları eski rengine döndür
+            }
+        });
+
+        if (isValid) {
+            swal({
+                title: "Başarılı!",
+                text: "Yazar başarılı bir şekilde eklendi.",
+                icon: "success",
+                button: "Tamam",
+            }).then(() => {
+                $('#authorForm').submit(); // Mesajdan sonra formu gönderir
+            });
+        } else {
+            swal({
+                title: "Hata!",
+                text: "Lütfen tüm gerekli alanları doldurun.",
+                icon: "error",
+                button: "Tamam",
+            });
+        }
+    });
+</script>

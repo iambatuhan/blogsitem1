@@ -1,0 +1,301 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="Ad" xml:space="preserve">
+    <value>Ad</value>
+  </data>
+  <data name="AnaSayfa" xml:space="preserve">
+    <value>ANASAYFA</value>
+  </data>
+  <data name="Arka_Dingil" xml:space="preserve">
+    <value>ARKA DİNGİL GRUBU</value>
+  </data>
+  <data name="Askerlik Durumunuz" xml:space="preserve">
+    <value>Askerlik Durumunuz</value>
+  </data>
+  <data name="Ağır_Devir" xml:space="preserve">
+    <value>Ağır Devir</value>
+  </data>
+  <data name="Ağır_tonaj" xml:space="preserve">
+    <value>AĞIR TONAJ</value>
+  </data>
+  <data name="Baglantı" xml:space="preserve">
+    <value>BAĞLANTI GRUBU</value>
+  </data>
+  <data name="Ceki_urunleri" xml:space="preserve">
+    <value>ÇEKİ ÜRÜNLERİ GRUBU</value>
+  </data>
+  <data name="Cinsiyet" xml:space="preserve">
+    <value>Cinsiyet</value>
+  </data>
+  <data name="Debriyaj" xml:space="preserve">
+    <value>DEBRİYAJ GRUBU</value>
+  </data>
+  <data name="Devam" xml:space="preserve">
+    <value>Devamını Oku</value>
+  </data>
+  <data name="Diferansiyel" xml:space="preserve">
+    <value>DİFERANSİYEL GRUBU</value>
+  </data>
+  <data name="Direksiyon" xml:space="preserve">
+    <value>DİREKSİYON GRUBU</value>
+  </data>
+  <data name="Dogum" xml:space="preserve">
+    <value>Dogum</value>
+  </data>
+  <data name="Dogum_Yeri" xml:space="preserve">
+    <value>Dogum Yeri</value>
+  </data>
+  <data name="Fren" xml:space="preserve">
+    <value>FREN GRUBU</value>
+  </data>
+  <data name="Hakkımızda" xml:space="preserve">
+    <value>HAKKIMIZDA</value>
+  </data>
+  <data name="HelloWorld" xml:space="preserve">
+    <value>Merhaba Dünya</value>
+  </data>
+  <data name="Hidrolik" xml:space="preserve">
+    <value>HİDROLİK GRUBU</value>
+  </data>
+  <data name="Kaldırma_Kapasitesi" xml:space="preserve">
+    <value>Kaldırma Kapasitesi</value>
+  </data>
+  <data name="Kaporta" xml:space="preserve">
+    <value>KAPORTA GRUBU</value>
+  </data>
+  <data name="Kariyer" xml:space="preserve">
+    <value>KARİYER</value>
+  </data>
+  <data name="Kategoriler" xml:space="preserve">
+    <value>KATEGORİLER</value>
+  </data>
+  <data name="King_pinler" xml:space="preserve">
+    <value>KİNG PİNLER</value>
+  </data>
+  <data name="Konteyner_ kilidleri" xml:space="preserve">
+    <value>KONTEYNER KİLİTLERİ</value>
+  </data>
+  <data name="Konu" xml:space="preserve">
+    <value>Konu</value>
+  </data>
+  <data name="Maaş" xml:space="preserve">
+    <value>Maaş</value>
+  </data>
+  <data name="Mail" xml:space="preserve">
+    <value>Mail</value>
+  </data>
+  <data name="Maksimum_Kol_Gücü" xml:space="preserve">
+    <value>Maksimum Kol Gücü</value>
+  </data>
+  <data name="Medeni Durumunuzu" xml:space="preserve">
+    <value>Medeni Durumunuzu</value>
+  </data>
+  <data name="Mesaj" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="Meslek" xml:space="preserve">
+    <value>Meslek</value>
+  </data>
+  <data name="Motor" xml:space="preserve">
+    <value>MOTOR GRUBU</value>
+  </data>
+  <data name="Not" xml:space="preserve">
+    <value>Not</value>
+  </data>
+  <data name="Okul" xml:space="preserve">
+    <value>Okul</value>
+  </data>
+  <data name="PARK AYAKLARI" xml:space="preserve">
+    <value>PARK AYAKLARI</value>
+  </data>
+  <data name="Refanslar" xml:space="preserve">
+    <value>Refanslarımız ve İş Ortaklarımız</value>
+  </data>
+  <data name="Römok_krikoları" xml:space="preserve">
+    <value>RÖMORK KRİKOLARI</value>
+  </data>
+  <data name="SelectedLanguage" xml:space="preserve">
+    <value>Seçili Dil Bulunmuyor, default dil görüntüleniyor</value>
+  </data>
+  <data name="Seri_Devir" xml:space="preserve">
+    <value>Seri Devir</value>
+  </data>
+  <data name="Sertifikalar" xml:space="preserve">
+    <value>SERTİFİKALAR</value>
+  </data>
+  <data name="Siparis_Kodu" xml:space="preserve">
+    <value>Sipariş Kodu</value>
+  </data>
+  <data name="Sipariş Kodu Örneği" xml:space="preserve">
+    <value>Sipariş Kodu Örneği</value>
+  </data>
+  <data name="Son_eklenen" xml:space="preserve">
+    <value>Son Eklenen Ürünler</value>
+  </data>
+  <data name="Soyadı" xml:space="preserve">
+    <value>Soyadı</value>
+  </data>
+  <data name="Tanim" xml:space="preserve">
+    <value>Bulunamıyor</value>
+  </data>
+  <data name="Tanıtım" xml:space="preserve">
+    <value>Şirketleri, sektördeki lider konumunu yenilikçi yaklaşımıyla sağlamış bir kuruluş olarak bilinmektedir. Müşteri odaklı hizmet anlayışı ve kalite standartlarındaki sürekli yükseliş, şirketini rakiplerinden ayıran önemli özelliklerden biridir. Aynı zamanda iş hayatına değer katan bir kurum olarak, çalışan memnuniyetini ve takım ruhunu ön planda tutmaktadır. Etik değerlere olan bağlılığı ve sosyal sorumluluk bilinciyle de toplumsal katkı sağlamayı amaçlamaktadır. Yenilikçi projeler ve stratejilerle sektöründe öncü rolünü sürdürmektedir.</value>
+    <comment>s</comment>
+  </data>
+  <data name="Tanıtım1" xml:space="preserve">
+    <value>Çalışanlar şirketin başarısına katkıda bulunan en değerli varlıklardan biridir. Uzmanlık alanlarındaki yüksek becerileri ve işbirliği yapma yetenekleriyle öne çıkan ekip üyeleri, iş yerinde olumlu bir atmosfer yaratarak ekip ruhunu güçlendiriyor. Motivasyonu ve çalışma disipliniyle şirket kültürünü şekillendiren çalışanlar her zaman güvenilir ve profesyonel bir şekilde çalışırlar. Ayrıca sürekli gelişime ve öğrenmeye açık tutumlarıyla da dikkat çekiyorlar.</value>
+  </data>
+  <data name="Tanıtım2" xml:space="preserve">
+    <value>Bu şirket, sektördeki lider konumunu yenilikçi yaklaşımıyla sağlamış bir kuruluş olarak tanınıyor. Müşteri odaklı hizmet anlayışı ve sürekli yükselen kalite standartları, onları rakiplerinden ayıran önemli özellikler arasında. Aynı zamanda iş hayatına değer katan bir kurum olarak, çalışan memnuniyetini ve takım ruhunu ön planda tutmaları takdire şayan. Etik değerlere olan bağlılıkları ve toplumsal sorumluluk bilinci, topluma gerçek anlamda katkı sağlamayı hedefliyorlar. Yenilikçi projeler ve stratejilerle sektörlerinde öncü bir rol oynamaya devam ediyorlar."</value>
+  </data>
+  <data name="Taşıma_Kapasitesi" xml:space="preserve">
+    <value>Taşıma Kapasitesi</value>
+  </data>
+  <data name="Trailer Ürünleri" xml:space="preserve">
+    <value>TRAİLER ÜRÜNLERİ</value>
+  </data>
+  <data name="Traktör Ürünleri" xml:space="preserve">
+    <value>TRAKTÖR ÜRÜNLERİ</value>
+  </data>
+  <data name="Urunler" xml:space="preserve">
+    <value>ÜRÜNLER</value>
+  </data>
+  <data name="Çalışmak İstediğiniz Alan" xml:space="preserve">
+    <value>Çalışmak İstediğiniz Alan</value>
+  </data>
+  <data name="Ön_dingil" xml:space="preserve">
+    <value>ÖN DİNGİL GRUBU</value>
+  </data>
+  <data name="Ön_Dingil_grubu" xml:space="preserve">
+    <value>ÖN DİNGİL GRUBU</value>
+  </data>
+  <data name="Ürün_Fotografları" xml:space="preserve">
+    <value>Ürün Detaylı Fotografları</value>
+  </data>
+  <data name="Ürün_Kodu" xml:space="preserve">
+    <value>Ürün Kodu</value>
+  </data>
+  <data name="İletişim" xml:space="preserve">
+    <value>İLETİŞİM</value>
+  </data>
+  <data name="Şanzıman" xml:space="preserve">
+    <value>ŞANZIMAN GRUBU</value>
+  </data>
+</root>

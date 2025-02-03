@@ -1,0 +1,49 @@
+﻿@model EntitiyLayer.Concrete.Stok
+@{
+    ViewBag.Title = "UpdateBlog";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link rel="stylesheet" href="~/miniblog/fonts/icomoon/StyleSheet5.css">
+
+<form id="stokForm" class="form-group" method="post">
+    @Html.Label("Blog ID")
+    @Html.TextBoxFor(x => x.StokID, new { @class = "form-control", @readonly = "readonly" })
+
+    @Html.Label("Makine Adı")
+    @Html.DropDownListFor(x => x.MakineAdı, ViewBag.values1 != null ? (List<SelectListItem>)ViewBag.values1 : new List<SelectListItem>(), new { @class = "form-control" })
+
+    <br />
+    @Html.Label("Bölüm")
+    @Html.DropDownListFor(x => x.Bölümü, ViewBag.values2 != null ? (List<SelectListItem>)ViewBag.values2 : new List<SelectListItem>(), new { @class = "form-control" })
+
+    <br />
+    <br />
+    @Html.Label("Parça Adı")
+    @Html.TextBoxFor(x => x.ParçaAdı, new { @class = "form-control" })
+
+    <br />
+    <br />
+    @Html.Label("Miktar")
+    @Html.TextBoxFor(x => x.Miktar, new { @class = "form-control" })
+
+    <button id="btn1" class="btn btn-3">Kaydet</button>
+</form>
+
+<script>
+    $(document).ready(function () {
+        // SweetAlert ile başarılı mesaj gösterimi
+        $('#btn1').click(function (event) {
+            event.preventDefault(); // Formun otomatik olarak submit olmasını engeller
+
+            swal({
+                title: "Başarılı!",
+                text: "Veriler başarılı bir şekilde güncellendi.",
+                icon: "success",
+                button: "Tamam",
+            }).then(() => {
+                $('#stokForm').submit(); // SweetAlert mesajından sonra formu gönderir
+            });
+        });
+    });
+</script>

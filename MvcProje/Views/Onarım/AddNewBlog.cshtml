@@ -1,0 +1,128 @@
+﻿@model EntitiyLayer.Concrete.Onarım
+@{
+    ViewBag.Title = "AddNewBlog";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+@using (Html.BeginForm("AddNewBlog", "Onarım", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                @Html.Label("Atancak Kişi")
+                @Html.DropDownListFor(x => x.AuthorID,
+                    ViewBag.values1 != null ? (List<SelectListItem>)ViewBag.values1 : new List<SelectListItem>(),
+                    new { @class = "form-control", id = "AuthorID" })
+            </div>
+            <div class="col-md-6">
+                @Html.Label("Bölümü Seçiniz")
+                @Html.DropDownListFor(x => x.KategoriAdı,
+                    ViewBag.values5 != null ? (List<SelectListItem>)ViewBag.values5 : new List<SelectListItem>(),
+                    new { @class = "form-control", id = "KategoriAdı" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                @Html.Label("Arıza Seçiniz")
+                @Html.DropDownListFor(x => x.ArızaKayıtID,
+                    ViewBag.values2 != null ? (List<SelectListItem>)ViewBag.values2 : new List<SelectListItem>(),
+                    new { @class = "form-control", id = "ArızaKayıtID" })
+            </div>
+            <div class="col-md-6">
+                @Html.Label("Makine Kodu")
+                @Html.DropDownListFor(x => x.MakineKodu,
+                    new List<SelectListItem>(),
+                    new { @class = "form-control", id = "MakineKodu" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                @Html.Label("Yapılacak İş")
+                @Html.TextAreaFor(x => x.YapılacakIs,
+                    new { @class = "form-control", id = "YapılacakIs" })
+            </div>
+            <div class="col-md-6">
+                @Html.Label("Aciliyet Durumu:")
+                @Html.DropDownListFor(x => x.AcileyetDurumu,
+                    new SelectList(new[] {
+                        new { Value = "Yüksek", Text = "Yüksek" },
+                        new { Value = "Normal", Text = "Normal" },
+                        new { Value = "Az", Text = "Az" }
+                    }, "Value", "Text"), "Seçiniz",
+                    new { @class = "form-control", id = "AcileyetDurumu" })
+            </div>
+        </div>
+        <br />
+        <button class="btn btn-outline-primary" id="btnSave">Kaydet</button>
+    </div>
+}
+
+<script>
+    // Kategorilere bağlı makine kodlarını tanımlayan harita
+    const categoryMachineMap = {
+        1: ["OVALAMA TEZGAHI-ATA MARKA 40 TON(70.02)", "OVALAMA TEZGAHI-UMO MARKA 40 TON OTOMATİK(70.03))", "SOMUN KLAVUZ ÇEKME MAKİNASI (4LU)(70.16)", "PABUÇ PİMİ DELME ŞİŞİRME MAKİNASI(70.17)", "TRAPEZ MİL DELİK DELME HAVŞALAMA MAKİNASI(70.20)", "PABUÇ SAPLAMASI OVALAMA TEZGAHI(70.22)", "PABUÇ SAPLAMASI OVALAMA TEZGAHI(70.22)", "UMO MARKA OVALAMA TEZGAHI  40 TON(70.23)", "TELEREZYON AGİE(70.24)", "CNC TORNA MAZAK 200 8(80.01)", "CNC TORNA FEELER FTC 30 10'(80.02)", "CNC TORNA ACCUWAY 8'(80.03)", "TELEREZYON BROTHER", "CNC TORNA ECOCA SJ-20 6'(80.04)", "CNC DİK İŞLEME CHIRON FZ 12 W", "CNC DİK İŞLEM JITEN VMC 116(80.06)", "NUMERİK TAŞLAMA MAKİNASI ABAWERK(80.07)", "NUMERİK TAŞLAMA MAKİNASI ABAWERK(80.07)", "UNİVERSAL TORNA TEZSAN TOS(80.08)", "UNİVERSAL TORNA RUS(80.09)", "CNC DİK İŞLEME CHIRON FZ 18 W(80.12)", "CNC DİK İŞLEME CHIRON FZ 12 W-SON GELEN(80.13)", "PLASTİK ENJEKSİYON MAKİNESİ(80.14)", "CNC DİK İŞLEME HAAS WMB(80.15)", "CNC TORNA ECOCA MT-310(80.16)", "CNC TORNA ACCUWAY 10'(80.18)", "CNC DİK İŞLEME CHIRON FZ 18 W(2)(80.19)", "WELE A01265 DİŞ İŞLEM TEZGAHII(80.21)", "CHIRON FZ12W İŞLEME TEZGAHI(80.22)"],
+        2: ["Kaynak1", "Kaynak2"],
+        3: ["ELMALI SIVAMA HİDROLİK PRES-400 TON(20.01)", "EKSANTRİK PRES-300 TON(20.02)", "EKSANTRİK PRES KRUPP-150 TON(20.03)", "EKSANTRİK PRES KÜÇÜK-100 TON(20.04)", "1000 TON PRES(20.07)", "315 TON PRES-BERNINGHAUS(20.08)", "İÇ KOVAN TIRNAK AÇMA FİKSTÜRÜ(20.10)", "SCMB HİDROLİK PRES-200 TON(20.11)", "SCMB HİDROLİK PRES-200 TON(20.12)", "SCMB HİDROLİK PRES-200 TON(20.12)"],
+        4: ["TEST MAKİNASI", "PAMUÇ MONTAJ HATTI(90.08)", "TEST MAKİNASI (KUŞAK)(70.29)", "MAMUL MONTAJ HATTI(90.01)", "KİNG PİN-KONTEYNER KLT MONTAJ HATTI(90.06", "PAMUÇ MONTAJ HATTI(90.08)"],
+        6: ["ŞERİT TESTERE BMSY 800(10.01)", "ŞERİT TESTERE KESMAK Q280(10.02)", "ŞERİT TESTERE KARMETAL Q280(10.03)", "ŞERİT TESTERE KESMAK Q280(10.04)", "OMS PROFİL KESME VE BİÇİMLENDİRME ÜNİTESİ(10.06)", "GELISIM GLS-75 HIZLI KESIM MAKİNASI(10.07)"],//Testere
+        7: ["KUMLAMA MAKİNASI-ENDUMAK(40.01)", "NEWMAK KUMLAMA MAKİNASI (KÜÇÜK)(40.02)", "NEWMAK KUMLAMA MAKİNASI (BÜYÜK)(40.03)", "BOYA TESİSİ(40.05)"] //BoyaHane
+        // Diğer kategoriler burada devam eder
+    };
+
+    $(document).ready(function () {
+        // Kategori değiştiğinde çalışır
+        $('#KategoriAdı').change(function () {
+            const categoryId = $(this).val(); // Seçilen kategori ID'si
+            const makineDropdown = $('#MakineKodu'); // Makine dropdown
+
+            // Eski seçenekleri temizle ve varsayılan "Seçiniz" ekle
+            makineDropdown.empty();
+            makineDropdown.append('<option value="">Seçiniz</option>');
+
+            // Kategoriye bağlı makine kodlarını ekle
+            if (categoryId && categoryMachineMap[categoryId]) {
+                const machines = categoryMachineMap[categoryId];
+                machines.forEach(function (machine) {
+                    makineDropdown.append('<option value="' + machine + '">' + machine + '</option>');
+                });
+            }
+        });
+    });
+
+    // Kaydet butonuna basıldığında form validasyonu ve uyarı
+    $('#btnSave').click(function (event) {
+        event.preventDefault(); // Formun otomatik gönderimini engelle
+
+        // Gerekli alanların kontrolü
+        const authorId = $('#AuthorID').val();
+        const kategoriAdı = $('#KategoriAdı').val();
+        const arızaKayıtId = $('#ArızaKayıtID').val();
+        const makineKodu = $('#MakineKodu').val();
+        const yapılacakIs = $('#YapılacakIs').val();
+        const acileyetDurumu = $('#AcileyetDurumu').val();
+
+        if (!authorId || !kategoriAdı || !arızaKayıtId || !makineKodu || !yapılacakIs || !acileyetDurumu) {
+            swal({
+                title: "Hata!",
+                text: "Lütfen tüm alanları doldurun.",
+                icon: "error",
+                button: "Tamam",
+            });
+            return; // İşlemi sonlandır
+        }
+
+        // Başarı mesajı ve form gönderimi
+        swal({
+            title: "Başarılı!",
+            text: "Veriler başarıyla kaydedildi.",
+            icon: "success",
+            button: "Tamam",
+        }).then(() => {
+            $('form').submit(); // Formu gönder
+        });
+    });
+</script>

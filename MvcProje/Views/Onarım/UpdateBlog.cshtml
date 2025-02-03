@@ -1,0 +1,125 @@
+﻿@model EntitiyLayer.Concrete.Onarım
+@{
+    ViewBag.Title = "UpdateBlog";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link rel="stylesheet" href=" ~/miniblog/fonts/icomoon/StyleSheet5.css">
+<form id="onarimForm" class="form-group" method="post">
+    <div class="container">
+        @Html.Label("Blog ID")
+        @Html.TextBoxFor(x => x.OnarımID, new { @class = "form-control", id = "OnarımID" })
+        <span id="errorOnarımID" class="text-danger"></span>
+        <div class="row">
+            <div class="col-md-6">
+                @Html.Label("Atanacak Kişi")
+                @Html.DropDownListFor(x => x.AuthorID, ViewBag.values1 != null ? (List<SelectListItem>)ViewBag.values1 : new List<SelectListItem>(), new { @class = "form-control", id = "AuthorID" })
+                <span id="errorAuthorID" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                @Html.Label("Arıza Seçiniz")
+                @Html.DropDownListFor(x => x.ArızaKayıtID, ViewBag.values2 != null ? (List<SelectListItem>)ViewBag.values2 : new List<SelectListItem>(), new { @class = "form-control", id = "ArızaKayıtID" })
+                <span id="errorArızaKayıtID" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                @Html.Label("Makine Adı")
+                @Html.DropDownListFor(x => x.MakineAdı, ViewBag.values3 != null ? (List<SelectListItem>)ViewBag.values3 : new List<SelectListItem>(), new { @class = "form-control", id = "MakineAdı" })
+                <span id="errorMakineAdı" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                @Html.Label("Makine Kodu")
+                @Html.DropDownListFor(x => x.MakineKodu, ViewBag.values4 != null ? (List<SelectListItem>)ViewBag.values4 : new List<SelectListItem>(), new { @class = "form-control", id = "MakineKodu" })
+                <span id="errorMakineKodu" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                @Html.Label("Yapılacak İş")
+                @Html.TextAreaFor(x => x.YapılacakIs, new { @class = "form-control", id = "YapılacakIs" })
+                <span id="errorYapılacakIs" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                @Html.Label("Yapılan İş")
+                @Html.TextAreaFor(x => x.Yapılanİs, new { @class = "form-control", id = "Yapılanİs" })
+                <span id="errorYapılanİs" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                @Html.Label("Yapılması Gereken İş")
+                @Html.TextAreaFor(x => x.Yapılmasıİs, new { @class = "form-control", id = "Yapılmasıİs" })
+                <span id="errorYapılmasıİs" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6">
+                @Html.Label("Durumu:")
+                @Html.DropDownListFor(x => x.Durum, new SelectList(new[] {
+                    new { Value = "True", Text = "Çalışıyor" },
+                    new { Value = "False", Text = "Çalışmıyor" },
+                }, "Value", "Text"), "Seçiniz", new { @class = "form-control", id = "Durum" })
+                <span id="errorDurum" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                @Html.Label("Başlama:")
+                @Html.DropDownListFor(x => x.Başlama, new SelectList(new[] {
+                    new { Value = "True", Text = "Başladı" },
+                    new { Value = "False", Text = "Başlamadı" },
+                }, "Value", "Text"), "Seçiniz", new { @class = "form-control", id = "Başlama" })
+                <span id="errorBaşlama" class="text-danger"></span>
+            </div>
+
+            <div class="col-md-6">
+                @Html.Label("Bitirme:")
+                @Html.DropDownListFor(x => x.BitisDurum, new SelectList(new[] {
+                    new { Value = "True", Text = "Bitirdi" },
+                    new { Value = "False", Text = "Bitirmedi" },
+                }, "Value", "Text"), "Seçiniz", new { @class = "form-control", id = "Bitirme" })
+                <span id="errorBitirme" class="text-danger"></span>
+            </div>
+            <div class="col-md-6">
+                @Html.Label("Aciliyet Durumu:")
+                @Html.DropDownListFor(x => x.AcileyetDurumu, new SelectList(new[] {
+                    new { Value = "Yüksek", Text = "Yüksek" },
+                    new { Value = "Normal", Text = "Normal" },
+                    new { Value = "Az", Text = "Az" },
+                }, "Value", "Text"), "Seçiniz", new { @class = "form-control", id = "AciliyetDurumu" })
+                <span id="errorAciliyetDurumu" class="text-danger"></span>
+            </div>
+        </div>
+        <br />
+        <button class="btn btn-outline-primary" id="btnSave" type="button">Kaydet</button>
+    </div>
+    <br />
+</form>
+<script>
+    document.getElementById('btnSave').addEventListener('click', function (e) {
+        // Form alanlarını kontrol et
+        var isValid = true;
+
+        function checkField(id, errorId, message) {
+            var fieldValue = document.getElementById(id).value;
+            if (fieldValue === '' || fieldValue === null) {
+                document.getElementById(errorId).innerText = message;
+                isValid = false;
+            } else {
+                document.getElementById(errorId).innerText = '';
+            }
+        }
+        // Tüm alanlar için kontrol
+        checkField('OnarımID', 'errorOnarımID', 'Onarım ID boş geçilemez');
+        checkField('AuthorID', 'errorAuthorID', 'Atanacak Kişi boş geçilemez');
+        checkField('ArızaKayıtID', 'errorArızaKayıtID', 'Arıza boş geçilemez');
+        checkField('MakineAdı', 'errorMakineAdı', 'Makine Adı boş geçilemez');
+        checkField('MakineKodu', 'errorMakineKodu', 'Makine Kodu boş geçilemez');
+        checkField('YapılacakIs', 'errorYapılacakIs', 'Yapılacak İş boş geçilemez');
+        checkField('Yapılanİs', 'errorYapılanİs', 'Yapılan İş boş geçilemez');
+        checkField('Yapılmasıİs', 'errorYapılmasıİs', 'Yapılması Gereken İş boş geçilemez');
+        checkField('Durum', 'errorDurum', 'Durum seçilmelidir');
+        checkField('Başlama', 'errorBaşlama', 'Başlama durumu seçilmelidir');
+        checkField('Bitirme', 'errorBitirme', 'Bitirme durumu seçilmelidir');
+        checkField('AciliyetDurumu', 'errorAciliyetDurumu', 'Aciliyet durumu boş geçilemez');
+        // Eğer tüm alanlar geçerliyse formu gönder
+        if (isValid) {
+            document.getElementById('onarimForm').submit();
+        }
+    });
+</script>

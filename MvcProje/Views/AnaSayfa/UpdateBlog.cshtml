@@ -1,0 +1,36 @@
+﻿@model EntitiyLayer.Concrete.Blog
+@{
+    ViewBag.Title = "UpdateBlog";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<link rel="stylesheet" href=" ~/miniblog/fonts/icomoon/StyleSheet5.css">
+<form class="form-group" method="post">
+    @Html.Label("Blog ID")
+    @Html.TextBoxFor(x => x.BlogID, new { @class = "form-control" })
+
+    @Html.Label("Kategori")
+    @Html.DropDownListFor(x => x.CategoryID, ViewBag.values != null ? (List<SelectListItem>)ViewBag.values : new List<SelectListItem>(), new { @class = "form-control" })
+    <br />
+    <br />
+    @Html.Label("Makine Adı")
+    @Html.TextAreaFor(x => x.BlogTitle, new { @class = "form-control" })
+    <br />
+    <br />
+    @Html.Label("Makine Kodu")
+    @Html.TextAreaFor(x => x.MakineKodu, new { @class = "form-control" })
+    <br />
+    <br />
+    @Html.Label("Çalışma Durumu:")
+    @Html.DropDownListFor(x => x.Calısma_Durum, new SelectList(new[] {
+        new { Value = "Çalışıyor", Text = "Çalışıyor" },
+        new { Value = "Çalışmıyor", Text = "Çalışmıyor" },
+    }, "Value", "Text"), "Seçiniz", new { @class = "form-control" })
+    <br />
+    <button class="btn btn-outline-primary" id="btn1">Kaydet</button>
+    <script>
+        $('#Btn1').click(function () {
+            alert("Kategori Başarılı bir şekilde eklendi")
+        });
+    </script>
+    <button class="btn btn-3">Kaydet</button>
+</form>

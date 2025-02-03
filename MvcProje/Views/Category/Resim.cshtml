@@ -1,0 +1,23 @@
+﻿<link href="~/fonts/StyleSheet5.css" rel="stylesheet" />
+<div class="background"></div>
+<div class="background-texture"></div>
+<section class="carousel">
+    <h2 class="categories__title"></h2>
+    <div class="carousel__container">
+        @foreach (var x in Model)
+        {
+            <div class="carousel-item">
+                <a href="/AnaSayfa/BlogDetails/@x.BlogID">
+                    <img class="carousel-item__img" src="@x.BlogImage" alt="people" />
+                </a>
+                <div class="carousel-item__details">
+                    <div class="controls">
+                        <a href="/AnaSayfa/BlogDetails/@x.BlogID" style="color:white; text-align:center; text-decoration:none;">@x.BlogTitle</a>
+                        <br />
+                        <!-- Diğer içerikler buraya eklenebilir -->
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>

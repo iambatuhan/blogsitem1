@@ -1,0 +1,52 @@
+﻿3
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Google Pie Chart - Machine Status</title>
+
+    <!-- Google Charts yükleme -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+        // Google Charts'ı yükle
+        google.charts.load('current', { 'packages': ['corechart'] });
+
+        // Sayfa yüklendiğinde çizim fonksiyonunu çalıştır
+        google.charts.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            // ASP.NET'ten gelen veriyi alıyoruz
+            var machineStatus = @Html.Raw(Json.Encode(ViewBag.MachineStatus));
+
+            // Google Charts formatında veriyi hazırlıyoruz
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Status');
+            data.addColumn('number', 'Count');
+
+            // Veritabanından gelen veriyi tabloya ekliyoruz
+            for (var i = 0; i < machineStatus.length; i++) {
+                data.addRow([machineStatus[i].Status, machineStatus[i].Count]);
+            }
+
+            // Grafik seçenekleri
+            var options = {
+                title: 'Su Makinelerinin Çalışma Durumu',
+                is3D: true, // 3D görünüm için
+            };
+
+            // Grafiği çiz
+            var chart = new google.visualization.PieChart(document.getElementById('pie_chart'));
+            chart.draw(data, options);
+        }
+    </script>
+</head>
+<body>
+    <h2>Su Makinelerinin Çalışma Durumu</h2>
+    <!-- Grafik alanı -->
+    <div id="pie_chart" style="width: 900px; height: 500px"></div>
+</body>
+</html>
